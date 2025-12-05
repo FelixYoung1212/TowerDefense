@@ -19,7 +19,8 @@ class LuaFileExtractor:
             # 遍历JSON对象的所有键
             for key, value in data["value"].items():
                 # 检查路径是否包含指定路径且以.lua结尾
-                if 'lua/module/battle/component' in key and key.endswith('.lua'):
+                # if 'lua/module/battle/component' in key and key.endswith('.lua'):
+                if key.endswith('.lua'):
                     #去除lua/module/battle/component/
                     path = key.replace('lua/module/battle/component/','')
                     self.results.append(path)

@@ -3,8 +3,8 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using DefaultNamespace;
 
+[TaskCategory("攻击")]
 [TaskName("创建发射物")]
-[TaskCategory("创建发射物")]
 public class CreateProjectile : Action
 {
     [SerializeField] private ProjectileData m_ProjectileData;
