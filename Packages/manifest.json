@@ -4,6 +4,7 @@
     "com.bytedance.starksdk": "file:../Assets/../LocalPackages/com.bytedance.starksdk@6.6.0",
     "com.code-philosophy.hybridclr": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
     "com.qq.weixin.minigame": "https://gitee.com/wechat-minigame/minigame-tuanjie-transform-sdk.git#v0.1.18",
+    "com.unity.addressables": "1.22.3",
     "com.unity.collab-proxy": "2.10.2",
     "com.unity.feature.2d": "2.0.1",
     "com.unity.ide.rider": "3.0.38",
