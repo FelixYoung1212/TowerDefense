@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: c34e19d899cc73b46b5a8ee612c194b6
   m_SerializeEntries:
   - m_GUID: 18a34bd446d6dd94ca6ee19919dde1c4
-    m_Address: Assets/Resources_moved/Arrow.prefab
+    m_Address: Assets/AddressableResources/Arrow.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -29,6 +29,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9fb2e7175226e8f4bb6ca02de500e603
     m_Address: Assets/Settings/arrow1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1847649ee46cdd4984b8e4ba5179592
+    m_Address: Assets/AddressableResources/DataTables
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
