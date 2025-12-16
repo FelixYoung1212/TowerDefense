@@ -22,6 +22,20 @@
       "dependencies": {},
       "hash": "fcef6dfe8ed715cc60a7618a1d2ad62bcace3a80"
     },
+    "com.code-philosophy.luban": {
+      "version": "https://gitee.com/focus-creative-games/luban_unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d870def77ce13ea942786a6f9e6e55112b46c331"
+    },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "73a63b7f672b88f7e9992f6917eb458a8cbb6fa9"
+    },
     "com.qq.weixin.minigame": {
       "version": "https://gitee.com/wechat-minigame/minigame-tuanjie-transform-sdk.git#v0.1.18",
       "depth": 0,
