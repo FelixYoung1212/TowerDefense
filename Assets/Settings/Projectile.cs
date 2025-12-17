@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
             // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(1, "Arrow.prefab", "Enemy");
             // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(2, "Arrow.prefab", "Enemy");
             // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(3, "Arrow1.prefab", "Enemy");
-            GameEntry.GetComponent<DataTableComponent>().CreateDataTable(typeof(ItemDataRow)).ReadData("Assets/AddressableResources/DataTables/item_tbitem.json");
+            GameEntry.GetComponent<DataTableComponent>().CreateDataTable(typeof(Item)).ReadData("Assets/AddressableResources/DataTables/item_tbitem.bytes");
         }
 
         if (Input.GetKeyDown(KeyCode.B))

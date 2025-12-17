@@ -27,8 +27,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 54593b0f233db9d4ab29ec7d23dee2d5
-    m_Address: Assets/AddressableResources/DataTables/item_tbitem.json
+  - m_GUID: 58c394379da076d4da3b8bb0c5aa605a
+    m_Address: Assets/AddressableResources/DataTables/item_tbitem.bytes
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
