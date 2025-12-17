@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 using Luban;
+using SimpleJSON;
 
 
 namespace cfg.item
@@ -17,15 +18,15 @@ public partial class TbItem
     private readonly System.Collections.Generic.Dictionary<int, Item> _dataMap;
     private readonly System.Collections.Generic.List<Item> _dataList;
     
-    public TbItem(ByteBuf _buf)
+    public TbItem(JSONNode _buf)
     {
         _dataMap = new System.Collections.Generic.Dictionary<int, Item>();
         _dataList = new System.Collections.Generic.List<Item>();
         
-        for(int n = _buf.ReadSize() ; n > 0 ; --n)
+        foreach(JSONNode _ele in _buf.Children)
         {
             Item _v;
-            _v = Item.DeserializeItem(_buf);
+            { if(!_ele.IsObject) { throw new SerializationException(); }  _v = Item.DeserializeItem(_ele);  }
             _dataList.Add(_v);
             _dataMap.Add(_v.Id, _v);
         }
