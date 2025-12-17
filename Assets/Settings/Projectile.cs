@@ -1,4 +1,5 @@
 using System;
+using cfg;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -19,12 +20,13 @@ public class Projectile : MonoBehaviour
         transform.position += m_Direction * (m_Speed * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.A))
         {
-            GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(1,"Assets/Resources_moved/Arrow.prefab","Enemy");
-            GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(2,"Assets/Resources_moved/Arrow.prefab","Enemy");
-            // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(3,"Assets/Resources_moved/Arrow1.prefab","Enemy");
+            GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(1,"Assets/AddressableResources/Arrow.prefab","Enemy");
+            GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(2,"Assets/AddressableResources/Arrow.prefab","Enemy");
+            // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(3,"Assets/AddressableResources/Arrow1.prefab","Enemy");
             // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(1, "Arrow.prefab", "Enemy");
             // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(2, "Arrow.prefab", "Enemy");
             // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(3, "Arrow1.prefab", "Enemy");
+            GameEntry.GetComponent<DataTableComponent>().CreateDataTable(typeof(ItemDataRow)).ReadData("Assets/AddressableResources/DataTables/item_tbitem.json");
         }
 
         if (Input.GetKeyDown(KeyCode.B))

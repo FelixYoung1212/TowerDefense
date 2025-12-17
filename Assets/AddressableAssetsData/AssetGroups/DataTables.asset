@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: DataTables
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: DataTables
   m_Data:
     m_SerializedData: []
   m_GUID: f84662da4e974a2499beba76c1234e2d
