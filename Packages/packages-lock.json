@@ -36,6 +36,13 @@
       "dependencies": {},
       "hash": "73a63b7f672b88f7e9992f6917eb458a8cbb6fa9"
     },
+    "com.github.siccity.xnode": {
+      "version": "https://github.com/siccity/xNode.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d6effd70f5574369e3415c423ef3e621ea309564"
+    },
     "com.qq.weixin.minigame": {
       "version": "https://gitee.com/wechat-minigame/minigame-tuanjie-transform-sdk.git#v0.1.18",
       "depth": 0,
