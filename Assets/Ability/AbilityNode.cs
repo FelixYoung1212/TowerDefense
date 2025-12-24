@@ -2,7 +2,7 @@
 
 namespace DefaultNamespace.Ability
 {
-    public abstract class SkillNode<T> : ExecuteNode
+    public abstract class AbilityNode<T> : LinkableConditionalNode
     {
         /// <summary>
         /// 技能所有者

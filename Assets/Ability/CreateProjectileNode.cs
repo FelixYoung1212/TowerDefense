@@ -4,7 +4,7 @@ using DefaultNamespace.Ability;
 using UnityEngine;
 using XNode;
 
-public class CreateProjectileNode : SkillNode<GameObject>
+public class CreateProjectileNode : AbilityNode<GameObject>
 {
     [Input] public GameObject projectileTemplate;
 }

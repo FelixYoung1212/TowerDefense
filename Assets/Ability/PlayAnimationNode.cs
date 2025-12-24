@@ -4,8 +4,7 @@ using DefaultNamespace.Ability;
 using UnityEngine;
 using XNode;
 
-public class PlayAnimationNode : SkillNode<GameObject>
+public class PlayAnimationNode : AbilityNode<GameObject>
 {
     [Input] public string animationName;
-    [Input] public float waitSeconds;
 }

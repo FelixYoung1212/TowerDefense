@@ -1,6 +1,8 @@
-﻿namespace DefaultNamespace.Ability
+﻿using UnityEngine;
+
+namespace DefaultNamespace.Ability
 {
-    public class AbilityStartNode : AbilityEventBaseNode
+    public class AbilityStartNode : ConditionalNode
     {
     }
 }

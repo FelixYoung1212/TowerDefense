@@ -2,7 +2,7 @@
 
 namespace DefaultNamespace.Ability
 {
-    public class OnProjectileHitNode : SkillNode<GameObject>
+    public class OnProjectileHitNode : ConditionalNode
     {
     }
 }

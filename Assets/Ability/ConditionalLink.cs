@@ -3,7 +3,7 @@
 namespace DefaultNamespace.Ability
 {
     [Serializable]
-    public struct ExecuteLink
+    public struct ConditionalLink
     {
         
     }
