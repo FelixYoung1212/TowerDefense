@@ -33,7 +33,8 @@ namespace DefaultNamespace.Ability
         {
             for (var i = m_UpdateNodes.Count - 1; i >= 0; i--)
             {
-                m_UpdateNodes[i].OnUpdate(deltaTime);
+                var node = m_UpdateNodes[i];
+                node.OnUpdate(deltaTime);
             }
         }
 
