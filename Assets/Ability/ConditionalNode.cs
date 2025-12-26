@@ -7,7 +7,7 @@ namespace DefaultNamespace.Ability
     {
         [Output] public ConditionalLink execute;
 
-        public virtual IEnumerable<ConditionalNode> GetExecuteNodes()
+        public List<ConditionalNode> GetExecuteNodes()
         {
             List<ConditionalNode> executeNodes = new List<ConditionalNode>();
             foreach (var outputPort in Outputs)

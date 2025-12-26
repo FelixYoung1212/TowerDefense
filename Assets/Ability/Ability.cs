@@ -10,8 +10,6 @@ namespace DefaultNamespace.Ability
 
         private OnProjectileHitNode m_OnProjectileHitNode;
 
-        private List<IUpdate> m_UpdateNodes = new List<IUpdate>();
-
         public Ability(AbilityGraph graph)
         {
             m_Graph = graph;
@@ -29,15 +27,6 @@ namespace DefaultNamespace.Ability
             }
         }
 
-        public void Update(float deltaTime)
-        {
-            for (var i = m_UpdateNodes.Count - 1; i >= 0; i--)
-            {
-                var node = m_UpdateNodes[i];
-                node.OnUpdate(deltaTime);
-            }
-        }
-
         public void AbilityStart()
         {
             if (m_StartNode == null)
@@ -45,7 +34,17 @@ namespace DefaultNamespace.Ability
                 return;
             }
 
-            m_StartNode.GetExecuteNodes();
+            var executeNodes = m_StartNode.GetExecuteNodes();
+            if (executeNodes.Count == 0)
+            {
+                return;
+            }
+
+            var nodesToExecute = new Queue<ConditionalNode>();
+            foreach (var conditionalNode in executeNodes)
+            {
+                nodesToExecute.Enqueue(conditionalNode);
+            }
         }
 
         public void OnProjectileHit()
