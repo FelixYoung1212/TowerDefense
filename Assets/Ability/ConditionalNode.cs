@@ -31,6 +31,10 @@ namespace DefaultNamespace.Ability
         {
             return null;
         }
+
+        public virtual void Execute()
+        {
+        }
     }
 
     public abstract class LinkableConditionalNode : ConditionalNode

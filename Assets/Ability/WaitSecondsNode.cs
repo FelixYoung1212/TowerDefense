@@ -8,10 +8,9 @@ namespace DefaultNamespace.Ability
     {
         [Input] public float waitSeconds;
 
-        protected override IEnumerator WaitCoroutine(Action onComplete)
+        public override void Execute()
         {
-            yield return new WaitForSeconds(waitSeconds);
-            onComplete?.Invoke();
+            CoroutineManager.Instance.WaitForSeconds(waitSeconds, OnExecuteCompleted);
         }
     }
 }

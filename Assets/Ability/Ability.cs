@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace DefaultNamespace.Ability
 {
@@ -6,9 +7,7 @@ namespace DefaultNamespace.Ability
     {
         private AbilityGraph m_Graph;
 
-        private AbilityStartNode m_StartNode;
-
-        private OnProjectileHitNode m_OnProjectileHitNode;
+        private readonly List<AbilityStartNode> m_StartNodes = new List<AbilityStartNode>();
 
         public Ability(AbilityGraph graph)
         {
@@ -17,44 +16,31 @@ namespace DefaultNamespace.Ability
             {
                 if (node is AbilityStartNode startNode)
                 {
-                    m_StartNode = startNode;
-                }
-
-                if (node is OnProjectileHitNode onProjectileHitNode)
-                {
-                    m_OnProjectileHitNode = onProjectileHitNode;
+                    m_StartNodes.Add(startNode);
                 }
             }
         }
 
         public void AbilityStart()
         {
-            if (m_StartNode == null)
+            if (m_StartNodes.Count == 0)
             {
                 return;
             }
 
-            var executeNodes = m_StartNode.GetExecuteNodes();
-            if (executeNodes.Count == 0)
+            Queue<ConditionalNode> nodesToExecute = new Queue<ConditionalNode>();
+            foreach (var node in m_StartNodes)
             {
-                return;
+                nodesToExecute.Enqueue(node);
             }
 
-            var nodesToExecute = new Queue<ConditionalNode>();
-            foreach (var conditionalNode in executeNodes)
-            {
-                nodesToExecute.Enqueue(conditionalNode);
-            }
+            var enumerator = RunGraph(nodesToExecute);
+            while (enumerator.MoveNext()) ;
         }
 
-        public void OnProjectileHit()
+        private IEnumerator RunGraph(Queue<ConditionalNode> nodesToExecute)
         {
-            if (m_OnProjectileHitNode == null)
-            {
-                return;
-            }
-
-            m_OnProjectileHitNode.GetExecuteNodes();
+            yield return null;
         }
     }
 }

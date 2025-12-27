@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 namespace DefaultNamespace.Ability
 {
@@ -38,6 +40,17 @@ namespace DefaultNamespace.Ability
             {
                 m_Instance = null;
             }
+        }
+
+        public void WaitForSeconds(float seconds, Action onComplete)
+        {
+            StartCoroutine(WaitForSecondsInternal(seconds, onComplete));
+        }
+
+        private IEnumerator WaitForSecondsInternal(float seconds, Action onComplete)
+        {
+            yield return new WaitForSeconds(seconds);
+            onComplete?.Invoke();
         }
     }
 }
