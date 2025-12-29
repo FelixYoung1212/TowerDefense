@@ -10,7 +10,8 @@ namespace DefaultNamespace.Ability
 
         public override void Execute()
         {
-            CoroutineManager.Instance.WaitForSeconds(waitSeconds, OnExecuteCompleted);
+            float waitSec = GetInputValue(nameof(waitSeconds), waitSeconds);
+            CoroutineManager.Instance.WaitForSeconds(waitSec, OnExecuteCompleted);
         }
     }
 }
