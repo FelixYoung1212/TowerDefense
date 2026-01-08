@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c34e19d899cc73b46b5a8ee612c194b6
   m_SerializeEntries:
-  - m_GUID: 18a34bd446d6dd94ca6ee19919dde1c4
-    m_Address: Assets/AddressableResources/Arrow.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 48753dfb48271b34f8214743ae7aec76
     m_Address: Assets/Scenes/Test.scene
     m_ReadOnly: 0
