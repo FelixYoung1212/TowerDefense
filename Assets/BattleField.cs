@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
     public class BattleField : MonoBehaviour
     {
-        [SerializeField] private EnemySpawnPointManager m_EnemySpawnPointManager;
+        [FormerlySerializedAs("m_EnemySpawnPointManager")] [SerializeField] private EnemySpawnArea m_EnemySpawnArea;
     }
 }
