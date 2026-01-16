@@ -1,5 +1,5 @@
-using UnityEngine;
+using UnityGameFramework.Runtime;
 
-public class Unit : MonoBehaviour
+public class Unit : EntityLogic
 {
 }

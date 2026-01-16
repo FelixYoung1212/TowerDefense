@@ -1,9 +1,5 @@
-using System;
 using cfg;
-using DefaultNamespace;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityGameFramework.Runtime;
 
 namespace DefaultNamespace
 {
@@ -22,28 +18,22 @@ namespace DefaultNamespace
             transform.position += m_Direction * (m_Speed * Time.deltaTime);
             if (Input.GetKeyDown(KeyCode.A))
             {
-                GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(1, "Assets/AddressableResources/Arrow.prefab", "Enemy");
-                GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(2, "Assets/AddressableResources/Arrow.prefab", "Enemy");
-                // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(3,"Assets/AddressableResources/Arrow1.prefab","Enemy");
-                // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(1, "Arrow.prefab", "Enemy");
-                // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(2, "Arrow.prefab", "Enemy");
-                // GameEntry.GetComponent<EntityComponent>().ShowEntity<ArrowEntityLogic>(3, "Arrow1.prefab", "Enemy");
-                GameEntry.GetComponent<DataTableComponent>().CreateDataTable(typeof(Item)).ReadData("Assets/AddressableResources/DataTables/item_tbitem.bytes");
+                GameEntry.DataTable.CreateDataTable(typeof(Item)).ReadData("Assets/AddressableResources/DataTables/item_tbitem.bytes");
             }
 
             if (Input.GetKeyDown(KeyCode.B))
             {
-                GameEntry.GetComponent<EntityComponent>().HideEntity(1);
+                GameEntry.Entity.HideEntity(1);
             }
 
             if (Input.GetKeyDown(KeyCode.C))
             {
-                GameEntry.GetComponent<SceneComponent>().LoadScene("Assets/Scenes/Test.scene");
+                GameEntry.Scene.LoadScene("Assets/Scenes/Test.scene");
             }
 
             if (Input.GetKeyDown(KeyCode.D))
             {
-                GameEntry.GetComponent<SceneComponent>().UnloadScene("Assets/Scenes/Test.scene");
+                GameEntry.Scene.UnloadScene("Assets/Scenes/Test.scene");
             }
         }
 
