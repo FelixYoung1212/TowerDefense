@@ -20,6 +20,10 @@ namespace DefaultNamespace.Ability
                 {
                     m_StartNodes.Add(startNode);
                 }
+                else if (node is OnProjectileHitNode onProjectileHitNode)
+                {
+                    m_OnProjectileHitNodes.Add(onProjectileHitNode);
+                }
             }
         }
 
