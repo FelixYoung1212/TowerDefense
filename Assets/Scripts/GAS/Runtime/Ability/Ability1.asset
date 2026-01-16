@@ -29,10 +29,64 @@ MonoBehaviour:
       - fieldName: executed
         node: {fileID: 4481280047505159008}
         reroutePoints: []
+      - fieldName: executed
+        node: {fileID: 2378690859521130597}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+--- !u!114 &-1074748870316670827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a711cdb1fb474d0e930ab8071a3ffbb1, type: 3}
+  m_Name: Debug
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 232, y: -120}
+  ports:
+    keys:
+    - debugInfo
+    - executed
+    - execute
+    values:
+    - _fieldName: debugInfo
+      _node: {fileID: -1074748870316670827}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: executed
+      _node: {fileID: -1074748870316670827}
+      _typeQualifiedName: DefaultNamespace.Ability.ConditionalLink, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: execute
+        node: {fileID: 4481280047505159008}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: execute
+      _node: {fileID: -1074748870316670827}
+      _typeQualifiedName: DefaultNamespace.Ability.ConditionalLink, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  debugInfo: "\u7B49\u5F85\u4E24\u79D2\u6267\u884C"
 --- !u!114 &-1006643559313305301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,13 +148,66 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc3f803040fb71f4da98072c37b80644, type: 3}
-  m_Name: New Ability Base Graph
+  m_Name: Ability1
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -1006643559313305301}
   - {fileID: 7764363766635819717}
   - {fileID: -1084622026530542718}
   - {fileID: 4481280047505159008}
+  - {fileID: -1074748870316670827}
+  - {fileID: 2378690859521130597}
+--- !u!114 &2378690859521130597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a711cdb1fb474d0e930ab8071a3ffbb1, type: 3}
+  m_Name: Debug
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -72, y: -536}
+  ports:
+    keys:
+    - debugInfo
+    - executed
+    - execute
+    values:
+    - _fieldName: debugInfo
+      _node: {fileID: 2378690859521130597}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: executed
+      _node: {fileID: 2378690859521130597}
+      _typeQualifiedName: DefaultNamespace.Ability.ConditionalLink, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: execute
+        node: {fileID: -1084622026530542718}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: execute
+      _node: {fileID: 2378690859521130597}
+      _typeQualifiedName: DefaultNamespace.Ability.ConditionalLink, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  debugInfo: "\u6280\u80FD\u5F00\u59CB\u6267\u884C"
 --- !u!114 &4481280047505159008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +245,9 @@ MonoBehaviour:
       - fieldName: executed
         node: {fileID: 7764363766635819717}
         reroutePoints: []
+      - fieldName: executed
+        node: {fileID: -1074748870316670827}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -154,7 +264,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  waitSeconds: 0
+  waitSeconds: 2
 --- !u!114 &7764363766635819717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,12 +278,12 @@ MonoBehaviour:
   m_Name: Create Projectile
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 200, y: -248}
+  position: {x: 232, y: -264}
   ports:
     keys:
     - executed
     - execute
-    - projectileTemplate
+    - projectileAsset
     values:
     - _fieldName: executed
       _node: {fileID: 7764363766635819717}
@@ -196,13 +306,13 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: projectileTemplate
+    - _fieldName: projectileAsset
       _node: {fileID: 7764363766635819717}
-      _typeQualifiedName: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      _typeQualifiedName: DefaultNamespace.ProjectileAsset, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  projectileTemplate: {fileID: 0}
+  projectileAsset: {fileID: 0}

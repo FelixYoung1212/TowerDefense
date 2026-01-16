@@ -8,6 +8,7 @@ namespace DefaultNamespace
     {
         [SerializeField] private EnemySpawnArea m_EnemySpawnArea;
         [SerializeField] private RectTransform m_HeroSpawnPoint;
+        [SerializeField] private AbilityGraph m_AbilityGraph;
 
         private void OnEnable()
         {
@@ -27,6 +28,8 @@ namespace DefaultNamespace
             }
 
             GameEntry.Entity.ShowEntity<Hero>(1000, "Assets/AddressableResources/Heros/Hero1.prefab", "Hero");
+            var ability = new Ability.Ability(m_AbilityGraph);
+            ability.Start();
         }
 
         private void OnShowEntitySuccess(object sender, GameEventArgs eventArgs)

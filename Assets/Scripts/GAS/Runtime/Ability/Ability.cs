@@ -9,6 +9,7 @@ namespace DefaultNamespace.Ability
         private AbilityGraph m_Graph;
 
         private readonly List<AbilityStartNode> m_StartNodes = new List<AbilityStartNode>();
+        private readonly List<OnProjectileHitNode> m_OnProjectileHitNodes = new List<OnProjectileHitNode>();
 
         public Ability(AbilityGraph graph)
         {
@@ -33,6 +34,23 @@ namespace DefaultNamespace.Ability
             for (var i = 0; i < m_StartNodes.Count; i++)
             {
                 nodesToExecute.Enqueue(m_StartNodes[i]);
+            }
+
+            var enumerator = RunGraph(nodesToExecute);
+            while (enumerator.MoveNext()) ;
+        }
+
+        public void OnProjectileHit(Unit hitTarget)
+        {
+            if (m_OnProjectileHitNodes.Count == 0)
+            {
+                return;
+            }
+
+            Queue<Node> nodesToExecute = new Queue<Node>();
+            for (var i = 0; i < m_OnProjectileHitNodes.Count; i++)
+            {
+                nodesToExecute.Enqueue(m_OnProjectileHitNodes[i]);
             }
 
             var enumerator = RunGraph(nodesToExecute);

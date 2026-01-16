@@ -1,10 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DefaultNamespace;
 using DefaultNamespace.Ability;
 using UnityEngine;
-using XNode;
 
-public class CreateProjectileNode : AbilityNode<GameObject>
+public class CreateProjectileNode : AbilityNode<Unit>
 {
-    [Input] public GameObject projectileTemplate;
+    [Input] public ProjectileAsset projectileAsset;
+
+    public override void Execute()
+    {
+    }
 }

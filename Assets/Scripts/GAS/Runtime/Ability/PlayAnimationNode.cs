@@ -4,7 +4,7 @@ using DefaultNamespace.Ability;
 using UnityEngine;
 using XNode;
 
-public class PlayAnimationNode : AbilityNode<GameObject>
+public class PlayAnimationNode : AbilityNode<Unit>
 {
     [Input] public string animationName;
 }
