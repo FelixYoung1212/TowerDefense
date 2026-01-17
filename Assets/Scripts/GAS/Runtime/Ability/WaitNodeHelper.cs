@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace DefaultNamespace.Ability
 {
-    public class CoroutineHelper : MonoBehaviour
+    public class WaitNodeHelper : MonoBehaviour
     {
-        private static CoroutineHelper m_Instance;
+        private static WaitNodeHelper m_Instance;
 
-        public static CoroutineHelper Instance
+        public static WaitNodeHelper Instance
         {
             get
             {
-                m_Instance ??= FindObjectOfType<CoroutineHelper>();
+                m_Instance ??= FindObjectOfType<WaitNodeHelper>();
                 if (m_Instance == null)
                 {
-                    m_Instance = new GameObject(nameof(CoroutineHelper)).AddComponent<CoroutineHelper>();
+                    m_Instance = new GameObject(nameof(WaitNodeHelper)).AddComponent<WaitNodeHelper>();
                 }
 
                 return m_Instance;

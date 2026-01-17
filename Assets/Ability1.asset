@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: Debug
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 232, y: -120}
+  position: {x: 232, y: -216}
   ports:
     keys:
     - debugInfo
@@ -123,7 +123,10 @@ MonoBehaviour:
       _node: {fileID: -1006643559313305301}
       _typeQualifiedName: DefaultNamespace.Ability.ConditionalLink, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: executed
+        node: {fileID: 5895139140530799637}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -152,11 +155,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -1006643559313305301}
-  - {fileID: 7764363766635819717}
   - {fileID: -1084622026530542718}
   - {fileID: 4481280047505159008}
   - {fileID: -1074748870316670827}
   - {fileID: 2378690859521130597}
+  - {fileID: 5301522574728193937}
+  - {fileID: 5895139140530799637}
 --- !u!114 &2378690859521130597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,10 +247,10 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: executed
-        node: {fileID: 7764363766635819717}
+        node: {fileID: -1074748870316670827}
         reroutePoints: []
       - fieldName: executed
-        node: {fileID: -1074748870316670827}
+        node: {fileID: 5301522574728193937}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -265,7 +269,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   waitSeconds: 2
---- !u!114 &7764363766635819717
+--- !u!114 &5301522574728193937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,18 +279,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e98e07b83287d246b960c8f404c0ae3, type: 3}
-  m_Name: Create Projectile
+  m_Name: Create Projectile VFX
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 232, y: -264}
+  position: {x: 248, y: -392}
   ports:
     keys:
+    - prefab
     - executed
     - execute
-    - projectileAsset
+    - speed
+    - target
     values:
+    - _fieldName: prefab
+      _node: {fileID: 5301522574728193937}
+      _typeQualifiedName: UnityEngine.AddressableAssets.AssetReferenceT`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
     - _fieldName: executed
-      _node: {fileID: 7764363766635819717}
+      _node: {fileID: 5301522574728193937}
       _typeQualifiedName: DefaultNamespace.Ability.ConditionalLink, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
@@ -298,7 +314,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: execute
-      _node: {fileID: 7764363766635819717}
+      _node: {fileID: 5301522574728193937}
       _typeQualifiedName: DefaultNamespace.Ability.ConditionalLink, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
@@ -306,13 +322,79 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: projectileAsset
-      _node: {fileID: 7764363766635819717}
-      _typeQualifiedName: DefaultNamespace.ProjectileAsset, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+    - _fieldName: speed
+      _node: {fileID: 5301522574728193937}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  projectileAsset: {fileID: 0}
+    - _fieldName: target
+      _node: {fileID: 5301522574728193937}
+      _typeQualifiedName: Unit, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  prefab:
+    m_AssetGUID: 5a413226c7007a744acae287a4cf8028
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  speed: 1
+  target: {fileID: 0}
+--- !u!114 &5895139140530799637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a711cdb1fb474d0e930ab8071a3ffbb1, type: 3}
+  m_Name: Debug
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 280, y: -568}
+  ports:
+    keys:
+    - debugInfo
+    - executed
+    - execute
+    values:
+    - _fieldName: debugInfo
+      _node: {fileID: 5895139140530799637}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: executed
+      _node: {fileID: 5895139140530799637}
+      _typeQualifiedName: DefaultNamespace.Ability.ConditionalLink, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: execute
+        node: {fileID: -1006643559313305301}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: execute
+      _node: {fileID: 5895139140530799637}
+      _typeQualifiedName: DefaultNamespace.Ability.ConditionalLink, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  debugInfo: "\u5F00\u59CB\u64AD\u653E\u52A8\u753B"

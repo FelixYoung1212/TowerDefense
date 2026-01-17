@@ -32,7 +32,7 @@ namespace DefaultNamespace.Ability
             if (m_StartNodes.Count == 0)
             {
                 return;
-            }
+            } 
 
             Queue<Node> nodesToExecute = new Queue<Node>();
             for (var i = 0; i < m_StartNodes.Count; i++)
