@@ -16,10 +16,8 @@ namespace GAS.Runtime.Ability
         {
             m_Speed = speed;
             m_Direction = direction;
-            // 计算旋转让Z轴朝向direction
             Quaternion rotation = Quaternion.LookRotation(direction);
-            // 但我们需要X轴朝向direction，所以再旋转90度
-            rotation *= Quaternion.Euler(90, -90, 0); // 或者 (0, 90, 0) 取决于朝向
+            rotation *= Quaternion.Euler(90, -90, 0);
             transform.rotation = rotation;
         }
 
@@ -33,6 +31,11 @@ namespace GAS.Runtime.Ability
             if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
             {
                 GameEntry.Entity.HideEntity(Entity);
+            }
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                GameEntry.Entity.HideEntity(Entity);
+                GameEntry.Entity.HideEntity(other.GetComponent<Entity>());
             }
         }
     }
