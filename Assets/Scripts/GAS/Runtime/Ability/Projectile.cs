@@ -15,11 +15,12 @@ namespace GAS.Runtime.Ability
         {
             m_Speed = speed;
             m_Direction = direction;
+            transform.rotation = Quaternion.LookRotation(m_Direction);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-            gameObject.transform.transform.Translate(m_Direction * (m_Speed * elapseSeconds));
+            gameObject.transform.Translate(m_Direction * (m_Speed * elapseSeconds), Space.World);
         }
     }
 }

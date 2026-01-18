@@ -13,10 +13,10 @@ public class CreateProjectileNode : AbilityNode<Unit>
     public override void Execute()
     {
         var direction = !target ? Vector3.up : Vector3.Normalize(target.transform.position - Owner.transform.position);
-        GameEntry.Entity.ShowEntity<Projectile>(2000, prefab.RuntimeKey as string, "Arrow", vfx =>
+        GameEntry.Entity.ShowEntity<Projectile>(2000, prefab.RuntimeKey as string, "Arrow", arrow =>
         {
-            vfx.transform.position = new Vector3(0, 0, 1);
-            vfx.Init(speed, direction);
+            arrow.transform.position = new Vector3(0, 0, 1);
+            arrow.Init(speed, direction);
         });
     }
 }
