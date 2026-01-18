@@ -6,7 +6,7 @@ namespace GAS.Runtime.Ability
     /// <summary>
     /// 飞行物特效类
     /// </summary>
-    public class ProjectileVFX : EntityLogic
+    public class Projectile : EntityLogic
     {
         private float m_Speed;
         private Vector3 m_Direction;
