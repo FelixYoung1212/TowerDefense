@@ -16,6 +16,7 @@ public class CreateProjectileNode : AbilityNode<Unit>
         GameEntry.Entity.ShowEntity<Projectile>(2000, prefab.RuntimeKey as string, "Arrow", arrow =>
         {
             arrow.transform.position = new Vector3(0, 0, 1);
+            arrow.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             arrow.Init(speed, direction);
         });
     }
