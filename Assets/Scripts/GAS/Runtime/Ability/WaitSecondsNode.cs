@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
-
-namespace DefaultNamespace.Ability
+﻿namespace GAS.Runtime
 {
+    /// <summary>
+    /// 等待N秒执行节点
+    /// </summary>
     public class WaitSecondsNode : WaitNode
     {
         [Input] public float waitSeconds;

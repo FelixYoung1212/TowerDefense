@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace DefaultNamespace.Ability
+namespace GAS.Runtime
 {
     public class WaitNodeHelper : MonoBehaviour
     {

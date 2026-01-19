@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace GAS.Runtime.Ability
+namespace DefaultNamespace
 {
     /// <summary>
     /// 飞行物特效资源

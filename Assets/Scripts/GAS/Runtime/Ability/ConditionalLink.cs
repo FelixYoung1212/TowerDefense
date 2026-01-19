@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DefaultNamespace.Ability
+namespace GAS.Runtime
 {
     [Serializable]
     public struct ConditionalLink

@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Ability
+namespace GAS.Runtime
 {
+    /// <summary>
+    /// 调试节点输出调试信息
+    /// </summary>
     public class DebugNode : LinkableConditionalNode
     {
         [Input] public string debugInfo;

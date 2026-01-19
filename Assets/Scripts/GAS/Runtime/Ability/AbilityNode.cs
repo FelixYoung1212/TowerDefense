@@ -1,7 +1,9 @@
-﻿using UnityEngine;
-
-namespace DefaultNamespace.Ability
+﻿namespace GAS.Runtime
 {
+    /// <summary>
+    /// 能力节点
+    /// </summary>
+    /// <typeparam name="T">能力拥有者</typeparam>
     public abstract class AbilityNode<T> : LinkableConditionalNode
     {
         /// <summary>

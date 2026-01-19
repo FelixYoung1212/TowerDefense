@@ -1,7 +1,10 @@
 ﻿using System;
 
-namespace DefaultNamespace.Ability
+namespace GAS.Runtime
 {
+    /// <summary>
+    /// 等待执行节点抽象类
+    /// </summary>
     public abstract class WaitNode : LinkableConditionalNode
     {
         public Action<WaitNode> onExecuteCompleted;

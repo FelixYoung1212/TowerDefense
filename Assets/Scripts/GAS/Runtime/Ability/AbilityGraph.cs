@@ -1,7 +1,13 @@
 using UnityEngine;
 using XNode;
 
-[CreateAssetMenu(menuName = "TowerDefense/Abilities/AbilityGraph")]
-public sealed class AbilityGraph : NodeGraph
+namespace GAS.Runtime
 {
+    /// <summary>
+    /// 能力图表
+    /// </summary>
+    [CreateAssetMenu(menuName = "GAS/AbilityGraph", fileName = "New Ability Graph")]
+    public sealed class AbilityGraph : NodeGraph
+    {
+    }
 }

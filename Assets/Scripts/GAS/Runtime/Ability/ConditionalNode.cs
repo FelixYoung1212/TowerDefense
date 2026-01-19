@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using XNode;
 
-namespace DefaultNamespace.Ability
+namespace GAS.Runtime
 {
     public abstract class ConditionalNode : Node
     {

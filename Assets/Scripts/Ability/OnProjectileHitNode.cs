@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using GAS.Runtime;
 
-namespace DefaultNamespace.Ability
+namespace DefaultNamespace
 {
     public class OnProjectileHitNode : ConditionalNode
     {
