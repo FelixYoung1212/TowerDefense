@@ -4,12 +4,38 @@ using XNode;
 
 namespace DefaultNamespace
 {
-    public class Ability : Ability<Unit>
+    public class Ability : Ability<UnitAbilitySystemComponent>
     {
         private readonly List<AbilityStartNode> m_StartNodes = new List<AbilityStartNode>();
         private readonly List<OnProjectileHitNode> m_OnProjectileHitNodes = new List<OnProjectileHitNode>();
+        private readonly List<AbilityNode> m_AbilityNodes = new List<AbilityNode>();
 
-        public Ability(AbilityGraph graph, Unit owner) : base(graph, owner)
+        public Ability(AbilityGraph graph) : base(graph)
+        {
+            InitNodes();
+        }
+
+        public Ability(AbilityGraph graph, UnitAbilitySystemComponent owner) : base(graph, owner)
+        {
+            InitNodes();
+            InitAbilityNodes(owner);
+        }
+
+        public override void SetOwner(UnitAbilitySystemComponent owner)
+        {
+            base.SetOwner(owner);
+            InitAbilityNodes(owner);
+        }
+
+        private void InitAbilityNodes(UnitAbilitySystemComponent owner)
+        {
+            foreach (var abilityNode in m_AbilityNodes)
+            {
+                abilityNode.Init(owner);
+            }
+        }
+
+        private void InitNodes()
         {
             foreach (var node in Graph.nodes)
             {
@@ -21,9 +47,9 @@ namespace DefaultNamespace
                 {
                     m_OnProjectileHitNodes.Add(onProjectileHitNode);
                 }
-                else if (node is AbilityNode<Unit> abilityNode)
+                else if (node is AbilityNode abilityNode)
                 {
-                    abilityNode.Init(owner);
+                    m_AbilityNodes.Add(abilityNode);
                 }
             }
         }

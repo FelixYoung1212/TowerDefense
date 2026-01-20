@@ -8,14 +8,24 @@ namespace GAS.Runtime
     /// 能力抽象基类
     /// </summary>
     /// <typeparam name="T">能力拥有者</typeparam>
-    public abstract class Ability<T>
+    public abstract class Ability<T> where T : IAbilitySystemComponent
     {
         protected AbilityGraph Graph { get; private set; }
         protected T Owner { get; private set; }
 
+        protected Ability(AbilityGraph graph)
+        {
+            Graph = graph;
+        }
+
         protected Ability(AbilityGraph graph, T owner)
         {
             Graph = graph;
+            Owner = owner;
+        }
+
+        public virtual void SetOwner(T owner)
+        {
             Owner = owner;
         }
 
@@ -56,7 +66,7 @@ namespace GAS.Runtime
             }
         }
 
-        protected void WaitedRun(Queue<Node> nodesToRun)
+        private void WaitedRun(Queue<Node> nodesToRun)
         {
             var enumerator = RunGraph(nodesToRun);
             while (enumerator.MoveNext()) ;
