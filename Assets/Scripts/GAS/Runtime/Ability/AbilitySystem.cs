@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace GAS.Runtime
 {
+    /// <summary>
+    /// 能力系统抽象类
+    /// </summary>
+    /// <typeparam name="TAbilitySystem"></typeparam>
+    /// <typeparam name="TAbility"></typeparam>
+    /// <typeparam name="TAbilityGraph"></typeparam>
     public abstract class AbilitySystem<TAbilitySystem, TAbility, TAbilityGraph> : MonoBehaviour
         where TAbilitySystem : AbilitySystem<TAbilitySystem, TAbility, TAbilityGraph>
         where TAbility : Ability<TAbilitySystem, TAbility, TAbilityGraph>

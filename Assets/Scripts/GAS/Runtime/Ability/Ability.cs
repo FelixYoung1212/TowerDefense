@@ -5,7 +5,7 @@ using XNode;
 namespace GAS.Runtime
 {
     /// <summary>
-    /// 能力抽象基类
+    /// 能力抽象类
     /// </summary>
     /// <typeparam name="TAbilitySystem">能力拥有者</typeparam>
     /// <typeparam name="TAbility"></typeparam>

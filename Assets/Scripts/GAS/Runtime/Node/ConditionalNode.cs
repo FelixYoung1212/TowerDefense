@@ -7,25 +7,27 @@ namespace GAS.Runtime
     {
         [Output] public ConditionalLink execute;
 
-        public List<ConditionalNode> GetExecuteNodes()
+        protected List<ConditionalNode> GetConditionalNodes(string fieldName)
         {
-            List<ConditionalNode> executeNodes = new List<ConditionalNode>();
+            List<ConditionalNode> conditionalNodes = new List<ConditionalNode>();
             foreach (var outputPort in Outputs)
             {
-                if (outputPort != null && outputPort.fieldName == nameof(execute))
+                if (outputPort != null && outputPort.fieldName == fieldName)
                 {
                     var connections = outputPort.GetConnections();
                     foreach (var connectPort in connections)
                     {
-                        executeNodes.Add(connectPort.node as ConditionalNode);
+                        conditionalNodes.Add(connectPort.node as ConditionalNode);
                     }
 
                     break;
                 }
             }
 
-            return executeNodes;
+            return conditionalNodes;
         }
+
+        public List<ConditionalNode> GetExecuteNodes() => GetConditionalNodes(nameof(execute));
 
         public override object GetValue(NodePort port)
         {

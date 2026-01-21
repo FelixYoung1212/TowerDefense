@@ -5,7 +5,7 @@ namespace GAS.Runtime
     /// <summary>
     ///能力图表抽象类
     /// </summary>
-    public class AbilityGraph : NodeGraph
+    public abstract class AbilityGraph : NodeGraph
     {
     }
 }
