@@ -7,24 +7,29 @@ namespace GAS.Runtime
     /// <summary>
     /// 能力抽象基类
     /// </summary>
-    /// <typeparam name="T">能力拥有者</typeparam>
-    public abstract class Ability<T> where T : IAbilitySystemComponent
+    /// <typeparam name="TAbilitySystem">能力拥有者</typeparam>
+    /// <typeparam name="TAbility"></typeparam>
+    /// <typeparam name="TAbilityGraph"></typeparam>
+    public abstract class Ability<TAbilitySystem, TAbility, TAbilityGraph>
+        where TAbilitySystem : AbilitySystem<TAbilitySystem, TAbility, TAbilityGraph>
+        where TAbility : Ability<TAbilitySystem, TAbility, TAbilityGraph>
+        where TAbilityGraph : AbilityGraph
     {
-        protected AbilityGraph Graph { get; private set; }
-        protected T Owner { get; private set; }
+        protected TAbilityGraph Graph { get; private set; }
+        protected TAbilitySystem Owner { get; private set; }
 
-        protected Ability(AbilityGraph graph)
+        protected Ability(TAbilityGraph graph)
         {
             Graph = graph;
         }
 
-        protected Ability(AbilityGraph graph, T owner)
+        protected Ability(TAbilityGraph graph, TAbilitySystem owner)
         {
             Graph = graph;
             Owner = owner;
         }
 
-        public virtual void SetOwner(T owner)
+        public virtual void SetOwner(TAbilitySystem owner)
         {
             Owner = owner;
         }

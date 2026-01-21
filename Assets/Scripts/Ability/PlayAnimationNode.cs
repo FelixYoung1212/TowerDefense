@@ -1,6 +1,7 @@
-﻿using GAS.Runtime;
+﻿using DefaultNamespace;
+using GAS.Runtime;
 
-public class PlayAnimationNode : AbilityNode
+public class PlayAnimationNode : AbilityNode<UnitAbilitySystem>
 {
     [Input] public string animationName;
 }

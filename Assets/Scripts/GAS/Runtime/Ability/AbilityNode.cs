@@ -3,18 +3,18 @@
     /// <summary>
     /// 能力节点
     /// </summary>
-    public abstract class AbilityNode : LinkableConditionalNode
+    public abstract class AbilityNode<TAbilitySystem> : LinkableConditionalNode
     {
         /// <summary>
         /// 技能所有者
         /// </summary>
-        protected IAbilitySystemComponent Owner { get; private set; }
+        protected TAbilitySystem Owner { get; private set; }
 
         /// <summary>
         /// 技能节点初始化
         /// </summary>
         /// <param name="owner">技能所有者</param>
-        public virtual void Init(IAbilitySystemComponent owner)
+        public void Init(TAbilitySystem owner)
         {
             Owner = owner;
         }

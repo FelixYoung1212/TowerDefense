@@ -5,18 +5,11 @@ using UnityEngine.AddressableAssets;
 
 namespace DefaultNamespace
 {
-    public class CreateProjectileNode : AbilityNode
+    public class CreateProjectileNode : AbilityNode<UnitAbilitySystem>
     {
         [Input] [LabelText("飞行物预设")] public AssetReferenceT<GameObject> prefab;
         [Input] [LabelText("飞行速度")] public float speed;
         [Input] [LabelText("目标")] public Unit target;
-        private new UnitAbilitySystemComponent Owner { get; set; }
-
-        public override void Init(IAbilitySystemComponent owner)
-        {
-            base.Init(owner);
-            Owner = base.Owner as UnitAbilitySystemComponent;
-        }
 
         public override void Execute()
         {

@@ -1,14 +1,12 @@
-﻿using System;
-
-namespace DefaultNamespace
+﻿namespace DefaultNamespace
 {
     public class Hero : Unit
     {
-        public UnitAbilitySystemComponent AbilitySystem { get; private set; }
+        public UnitAbilitySystem AbilitySystem { get; private set; }
 
         private void Awake()
         {
-            AbilitySystem = gameObject.AddComponent<UnitAbilitySystemComponent>();
+            AbilitySystem = gameObject.AddComponent<UnitAbilitySystem>();
         }
     }
 }

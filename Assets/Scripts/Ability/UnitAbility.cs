@@ -4,30 +4,31 @@ using XNode;
 
 namespace DefaultNamespace
 {
-    public class Ability : Ability<UnitAbilitySystemComponent>
+    public class UnitAbility : Ability<UnitAbilitySystem, UnitAbility, UnitAbilityGraph>
     {
         private readonly List<AbilityStartNode> m_StartNodes = new List<AbilityStartNode>();
         private readonly List<OnProjectileHitNode> m_OnProjectileHitNodes = new List<OnProjectileHitNode>();
-        private readonly List<AbilityNode> m_AbilityNodes = new List<AbilityNode>();
+        private readonly List<AbilityNode<UnitAbilitySystem>> m_AbilityNodes = new List<AbilityNode<UnitAbilitySystem>>();
+        public int ID => Graph.ID;
 
-        public Ability(AbilityGraph graph) : base(graph)
+        public UnitAbility(UnitAbilityGraph graph) : base(graph)
         {
             InitNodes();
         }
 
-        public Ability(AbilityGraph graph, UnitAbilitySystemComponent owner) : base(graph, owner)
+        public UnitAbility(UnitAbilityGraph graph, UnitAbilitySystem owner) : base(graph, owner)
         {
             InitNodes();
             InitAbilityNodes(owner);
         }
 
-        public override void SetOwner(UnitAbilitySystemComponent owner)
+        public override void SetOwner(UnitAbilitySystem owner)
         {
             base.SetOwner(owner);
             InitAbilityNodes(owner);
         }
 
-        private void InitAbilityNodes(UnitAbilitySystemComponent owner)
+        private void InitAbilityNodes(UnitAbilitySystem owner)
         {
             foreach (var abilityNode in m_AbilityNodes)
             {
@@ -47,7 +48,7 @@ namespace DefaultNamespace
                 {
                     m_OnProjectileHitNodes.Add(onProjectileHitNode);
                 }
-                else if (node is AbilityNode abilityNode)
+                else if (node is AbilityNode<UnitAbilitySystem> abilityNode)
                 {
                     m_AbilityNodes.Add(abilityNode);
                 }
