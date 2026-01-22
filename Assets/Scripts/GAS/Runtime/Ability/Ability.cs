@@ -42,28 +42,29 @@ namespace GAS.Runtime
                 switch (node)
                 {
                     case WaitNode waitNode:
-                        waitNode.onExecuteCompleted += (waitedNode) =>
+                        EnqueueNodes(nodesToExecute, waitNode.GetExecuteNodes());
+                        waitNode.onExecuteCompleted += waitedNode =>
                         {
                             Queue<Node> waitedNodes = new Queue<Node>();
-                            var executeNodes = waitNode.GetExecuteNodes();
-                            for (int i = 0; i < executeNodes.Count; i++)
-                            {
-                                waitedNodes.Enqueue(executeNodes[i]);
-                            }
-
+                            EnqueueNodes(waitedNodes, waitedNode.GetWaitExecuteNodes());
                             WaitedRun(waitedNodes);
-                            waitNode.onExecuteCompleted = null;
+                            waitedNode.onExecuteCompleted = null;
                         };
                         waitNode.Execute();
                         yield return waitNode;
                         break;
-                    case ConditionalNode conditionalNode:
-                        var executeNodes = conditionalNode.GetExecuteNodes();
-                        for (int i = 0; i < executeNodes.Count; i++)
+                    case ForLoopNode forLoopNode:
+                        EnqueueNodes(nodesToExecute, forLoopNode.GetExecuteNodes());
+                        for (var i = 0; i < forLoopNode.LoopCount; i++)
                         {
-                            nodesToExecute.Enqueue(executeNodes[i]);
+                            EnqueueNodes(nodesToExecute, forLoopNode.GetLoopBodyNodes());
+                            nodesToExecute.Enqueue(forLoopNode);
                         }
 
+                        yield return forLoopNode;
+                        break;
+                    case ConditionalNode conditionalNode:
+                        EnqueueNodes(nodesToExecute, conditionalNode.GetExecuteNodes());
                         conditionalNode.Execute();
                         yield return conditionalNode;
                         break;
@@ -75,6 +76,19 @@ namespace GAS.Runtime
         {
             var enumerator = RunGraph(nodesToRun);
             while (enumerator.MoveNext()) ;
+        }
+
+        private void EnqueueNodes<T>(Queue<Node> queue, List<T> nodes) where T : Node
+        {
+            if (queue == null || nodes == null || nodes.Count == 0)
+            {
+                return;
+            }
+
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                queue.Enqueue(nodes[i]);
+            }
         }
     }
 }

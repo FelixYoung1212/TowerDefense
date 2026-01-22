@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using XNode;
 
 namespace GAS.Runtime
 {
@@ -7,11 +8,30 @@ namespace GAS.Runtime
     /// </summary>
     public class DebugNode : LinkableConditionalNode
     {
+        public LogType logType;
         [Input] public string debugInfo;
 
         public override void Execute()
         {
-            Debug.Log(GetInputValue(nameof(debugInfo), debugInfo));
+            switch (logType)
+            {
+                case LogType.Info:
+                    Debug.Log(GetInputValue(nameof(debugInfo), debugInfo));
+                    break;
+                case LogType.Warning:
+                    Debug.LogWarning(GetInputValue(nameof(debugInfo), debugInfo));
+                    break;
+                case LogType.Error:
+                    Debug.LogError(GetInputValue(nameof(debugInfo), debugInfo));
+                    break;
+            }
         }
+    }
+
+    public enum LogType
+    {
+        Info,
+        Warning,
+        Error,
     }
 }
