@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using XNode;
 
 namespace GAS.Runtime
 {
@@ -11,6 +12,16 @@ namespace GAS.Runtime
         public List<ConditionalNode> GetLoopBodyNodes() => GetConditionalNodes(nameof(loopBody));
 
         public int LoopCount => GetInputValue(nameof(loopCount), loopCount);
+
+        public override object GetValue(NodePort port)
+        {
+            if (port.fieldName == nameof(index))
+            {
+                return index;
+            }
+
+            return null;
+        }
 
         public override void Execute()
         {

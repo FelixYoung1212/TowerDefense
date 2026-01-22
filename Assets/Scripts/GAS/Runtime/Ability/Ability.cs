@@ -57,8 +57,8 @@ namespace GAS.Runtime
                         EnqueueNodes(nodesToExecute, forLoopNode.GetExecuteNodes());
                         for (var i = 0; i < forLoopNode.LoopCount; i++)
                         {
-                            EnqueueNodes(nodesToExecute, forLoopNode.GetLoopBodyNodes());
-                            nodesToExecute.Enqueue(forLoopNode);
+                            LoopBodyRun(new Queue<Node>(forLoopNode.GetLoopBodyNodes()));
+                            forLoopNode.Execute();
                         }
 
                         yield return forLoopNode;
@@ -73,6 +73,12 @@ namespace GAS.Runtime
         }
 
         private void WaitedRun(Queue<Node> nodesToRun)
+        {
+            var enumerator = RunGraph(nodesToRun);
+            while (enumerator.MoveNext()) ;
+        }
+
+        private void LoopBodyRun(Queue<Node> nodesToRun)
         {
             var enumerator = RunGraph(nodesToRun);
             while (enumerator.MoveNext()) ;

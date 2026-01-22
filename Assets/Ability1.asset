@@ -1,138 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:yousandi.cn,2023:
---- !u!114 &-7811878172940787763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad05f329848641c9b2baf27e851edca7, type: 3}
-  m_Name: For Loop
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -280, y: -24}
-  ports:
-    keys:
-    - loopCount
-    - loopBody
-    - index
-    - executed
-    - execute
-    values:
-    - _fieldName: loopCount
-      _node: {fileID: -7811878172940787763}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: loopBody
-      _node: {fileID: -7811878172940787763}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: executed
-        node: {fileID: -5541399888536849184}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: index
-      _node: {fileID: -7811878172940787763}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: 691880597133579496}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: executed
-      _node: {fileID: -7811878172940787763}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: execute
-        node: {fileID: -752620187883422240}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: execute
-      _node: {fileID: -7811878172940787763}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  loopCount: 5
-  index: 30
---- !u!114 &-5541399888536849184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a711cdb1fb474d0e930ab8071a3ffbb1, type: 3}
-  m_Name: Debug
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 280, y: 40}
-  ports:
-    keys:
-    - debugInfo
-    - executed
-    - execute
-    values:
-    - _fieldName: debugInfo
-      _node: {fileID: -5541399888536849184}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: output
-        node: {fileID: 691880597133579496}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: executed
-      _node: {fileID: -5541399888536849184}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: loopBody
-        node: {fileID: -7811878172940787763}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: execute
-      _node: {fileID: -5541399888536849184}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  logType: 0
-  debugInfo: 
 --- !u!114 &-922973333707135762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +13,7 @@ MonoBehaviour:
   m_Name: Wait Seconds
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -280, y: -200}
+  position: {x: -24, y: 40}
   ports:
     keys:
     - waitSeconds
@@ -168,8 +35,8 @@ MonoBehaviour:
       _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: execute
-        node: {fileID: -752620187883422240}
+      - fieldName: loopBody
+        node: {fileID: -792886190919814940}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -196,7 +63,82 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  waitSeconds: 2
+  waitSeconds: 0.5
+--- !u!114 &-792886190919814940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad05f329848641c9b2baf27e851edca7, type: 3}
+  m_Name: For Loop
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -328, y: 24}
+  ports:
+    keys:
+    - loopCount
+    - loopBody
+    - index
+    - executed
+    - execute
+    values:
+    - _fieldName: loopCount
+      _node: {fileID: -792886190919814940}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: loopBody
+      _node: {fileID: -792886190919814940}
+      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: executed
+        node: {fileID: -922973333707135762}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: index
+      _node: {fileID: -792886190919814940}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: executed
+      _node: {fileID: -792886190919814940}
+      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: execute
+        node: {fileID: -752620187883422240}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: execute
+      _node: {fileID: -792886190919814940}
+      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  loopCount: 5
+  index: 5
 --- !u!114 &-752620187883422240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,10 +163,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: executed
-        node: {fileID: -922973333707135762}
-        reroutePoints: []
-      - fieldName: executed
-        node: {fileID: -7811878172940787763}
+        node: {fileID: -792886190919814940}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -246,55 +185,8 @@ MonoBehaviour:
   - {fileID: -752620187883422240}
   - {fileID: -922973333707135762}
   - {fileID: 2399792838117565026}
-  - {fileID: -7811878172940787763}
-  - {fileID: -5541399888536849184}
-  - {fileID: 691880597133579496}
+  - {fileID: -792886190919814940}
   m_ID: 1
---- !u!114 &691880597133579496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9038d173159b4af89ba5e576f63879b0, type: 3}
-  m_Name: Int To String
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 8, y: 136}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: 691880597133579496}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: index
-        node: {fileID: -7811878172940787763}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: 691880597133579496}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: debugInfo
-        node: {fileID: -5541399888536849184}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 
 --- !u!114 &2399792838117565026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +200,7 @@ MonoBehaviour:
   m_Name: Create Projectile
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 8, y: -168}
+  position: {x: 280, y: 40}
   ports:
     keys:
     - prefab
