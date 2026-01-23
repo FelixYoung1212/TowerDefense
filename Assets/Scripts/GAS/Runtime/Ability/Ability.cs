@@ -16,7 +16,7 @@ namespace GAS.Runtime
         where TAbilityGraph : AbilityGraph
     {
         protected TAbilityGraph Graph { get; private set; }
-        protected TAbilitySystem Owner { get; private set; }
+        public TAbilitySystem Owner { get; private set; }
 
         protected Ability(TAbilityGraph graph)
         {
@@ -29,7 +29,7 @@ namespace GAS.Runtime
             Owner = owner;
         }
 
-        public virtual void SetOwner(TAbilitySystem owner)
+        public void SetOwner(TAbilitySystem owner)
         {
             Owner = owner;
         }

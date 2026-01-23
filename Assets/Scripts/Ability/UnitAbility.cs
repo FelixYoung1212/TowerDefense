@@ -8,8 +8,6 @@ namespace DefaultNamespace
     {
         private readonly List<AbilityStartNode> m_StartNodes = new List<AbilityStartNode>();
         private readonly List<OnProjectileHitNode> m_OnProjectileHitNodes = new List<OnProjectileHitNode>();
-        private readonly List<AbilityNode<UnitAbilitySystem>> m_AbilityNodes = new List<AbilityNode<UnitAbilitySystem>>();
-        public int ID => Graph.ID;
 
         public UnitAbility(UnitAbilityGraph graph) : base(graph)
         {
@@ -19,22 +17,9 @@ namespace DefaultNamespace
         public UnitAbility(UnitAbilityGraph graph, UnitAbilitySystem owner) : base(graph, owner)
         {
             InitNodes();
-            InitAbilityNodes(owner);
         }
 
-        public override void SetOwner(UnitAbilitySystem owner)
-        {
-            base.SetOwner(owner);
-            InitAbilityNodes(owner);
-        }
-
-        private void InitAbilityNodes(UnitAbilitySystem owner)
-        {
-            foreach (var abilityNode in m_AbilityNodes)
-            {
-                abilityNode.Init(owner);
-            }
-        }
+        public int ID => Graph.ID;
 
         private void InitNodes()
         {
@@ -48,9 +33,10 @@ namespace DefaultNamespace
                 {
                     m_OnProjectileHitNodes.Add(onProjectileHitNode);
                 }
-                else if (node is AbilityNode<UnitAbilitySystem> abilityNode)
+
+                if (node is IAbilityOwner<UnitAbility> abilityOwnerNode)
                 {
-                    m_AbilityNodes.Add(abilityNode);
+                    abilityOwnerNode.SetAbility(this);
                 }
             }
         }

@@ -9,9 +9,9 @@ namespace GAS.Runtime
 
         public override object GetValue(NodePort port)
         {
-            if (port.fieldName == "output")
+            if (port.fieldName == nameof(output))
             {
-                var inputValue = GetInputValue("input", this.input);
+                var inputValue = GetInputValue(nameof(input), this.input);
                 return inputValue.ToString();
             }
 

@@ -1,7 +1,9 @@
-﻿using DefaultNamespace;
-using GAS.Runtime;
+﻿using GAS.Runtime;
 
-public class PlayAnimationNode : AbilityNode<UnitAbilitySystem>
+namespace DefaultNamespace
 {
-    [Input] public string animationName;
+    public class PlayAnimationNode : LinkableConditionalNode
+    {
+        [Input] public string animationName;
+    }
 }

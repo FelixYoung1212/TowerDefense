@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &-8322341458986233556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc479cfc26f49bb830c053fa4a696ad, type: 3}
+  m_Name: Get Enemy
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 344, y: -56}
+  ports:
+    keys:
+    - enemy
+    values:
+    - _fieldName: enemy
+      _node: {fileID: -8322341458986233556}
+      _typeQualifiedName: Unit, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: target
+        node: {fileID: 2399792838117565026}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  enemy: {fileID: 0}
 --- !u!114 &-6878705048807159498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,7 +44,7 @@ MonoBehaviour:
   m_Name: Float To String
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 296, y: 136}
+  position: {x: 168, y: 232}
   ports:
     keys:
     - input
@@ -58,7 +89,7 @@ MonoBehaviour:
   m_Name: Math
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 72, y: 40}
+  position: {x: -56, y: 136}
   ports:
     keys:
     - b
@@ -304,6 +335,7 @@ MonoBehaviour:
   - {fileID: 7829047405036927219}
   - {fileID: -6878705048807159498}
   - {fileID: 6988422639924044730}
+  - {fileID: -8322341458986233556}
   m_ID: 1
 --- !u!114 &2399792838117565026
 MonoBehaviour:
@@ -350,7 +382,10 @@ MonoBehaviour:
       _node: {fileID: 2399792838117565026}
       _typeQualifiedName: Unit, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: enemy
+        node: {fileID: -8322341458986233556}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -396,7 +431,7 @@ MonoBehaviour:
   m_Name: Int To Float
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -168, y: 56}
+  position: {x: -296, y: 152}
   ports:
     keys:
     - input
@@ -441,7 +476,7 @@ MonoBehaviour:
   m_Name: Debug
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: -24}
+  position: {x: 280, y: 72}
   ports:
     keys:
     - debugInfo
