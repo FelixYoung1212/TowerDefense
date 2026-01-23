@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Get Enemy
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 344, y: -56}
+  position: {x: 168, y: -56}
   ports:
     keys:
     - enemy
@@ -31,51 +31,6 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   enemy: {fileID: 0}
---- !u!114 &-6878705048807159498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e89f2603dda48338dd8636a4f4040da, type: 3}
-  m_Name: Float To String
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 168, y: 232}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: -6878705048807159498}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: result
-        node: {fileID: -2067576644726448654}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: -6878705048807159498}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: debugInfo
-        node: {fileID: 7829047405036927219}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 
 --- !u!114 &-2067576644726448654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +44,7 @@ MonoBehaviour:
   m_Name: Math
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -56, y: 136}
+  position: {x: 72, y: 56}
   ports:
     keys:
     - b
@@ -122,9 +77,6 @@ MonoBehaviour:
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: input
-        node: {fileID: -6878705048807159498}
-        reroutePoints: []
       - fieldName: waitSeconds
         node: {fileID: -922973333707135762}
         reroutePoints: []
@@ -149,7 +101,7 @@ MonoBehaviour:
   m_Name: Wait Seconds
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 360, y: -200}
+  position: {x: 40, y: -216}
   ports:
     keys:
     - executed
@@ -245,9 +197,6 @@ MonoBehaviour:
       - fieldName: executed
         node: {fileID: -922973333707135762}
         reroutePoints: []
-      - fieldName: executed
-        node: {fileID: 7829047405036927219}
-        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -332,8 +281,6 @@ MonoBehaviour:
   - {fileID: 2399792838117565026}
   - {fileID: -792886190919814940}
   - {fileID: -2067576644726448654}
-  - {fileID: 7829047405036927219}
-  - {fileID: -6878705048807159498}
   - {fileID: 6988422639924044730}
   - {fileID: -8322341458986233556}
   m_ID: 1
@@ -350,7 +297,7 @@ MonoBehaviour:
   m_Name: Create Projectile
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 664, y: -184}
+  position: {x: 392, y: -216}
   ports:
     keys:
     - prefab
@@ -431,7 +378,7 @@ MonoBehaviour:
   m_Name: Int To Float
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -296, y: 152}
+  position: {x: -168, y: 56}
   ports:
     keys:
     - input
@@ -463,58 +410,3 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
---- !u!114 &7829047405036927219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a711cdb1fb474d0e930ab8071a3ffbb1, type: 3}
-  m_Name: Debug
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 280, y: 72}
-  ports:
-    keys:
-    - debugInfo
-    - executed
-    - execute
-    values:
-    - _fieldName: debugInfo
-      _node: {fileID: 7829047405036927219}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: output
-        node: {fileID: -6878705048807159498}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: executed
-      _node: {fileID: 7829047405036927219}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: loopBody
-        node: {fileID: -792886190919814940}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: execute
-      _node: {fileID: 7829047405036927219}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  logType: 0
-  debugInfo: 

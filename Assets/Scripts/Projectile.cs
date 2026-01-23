@@ -15,9 +15,7 @@ namespace DefaultNamespace
         {
             m_Speed = speed;
             m_Direction = direction;
-            Quaternion rotation = Quaternion.LookRotation(direction);
-            rotation *= Quaternion.Euler(90, -90, 0);
-            transform.rotation = rotation;
+            transform.rotation = Quaternion.FromToRotation(Vector3.right, direction);
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
