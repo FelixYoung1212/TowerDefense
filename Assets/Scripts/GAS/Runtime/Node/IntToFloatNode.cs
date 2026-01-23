@@ -2,20 +2,20 @@
 
 namespace GAS.Runtime
 {
-    public class IntToStringNode : Node
+    public class IntToFloatNode : Node
     {
         [Input(connectionType = ConnectionType.Override)] public int input;
-        [Output] public string output;
+        [Output] public float output;
 
         public override object GetValue(NodePort port)
         {
             if (port.fieldName == "output")
             {
                 var inputValue = GetInputValue("input", this.input);
-                return inputValue.ToString();
+                return (float)inputValue;
             }
 
-            return null;
+            return 0;
         }
     }
 }

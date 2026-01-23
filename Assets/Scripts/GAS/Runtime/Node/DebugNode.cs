@@ -9,7 +9,7 @@ namespace GAS.Runtime
     public class DebugNode : LinkableConditionalNode
     {
         public LogType logType;
-        [Input] public string debugInfo;
+        [Input(connectionType = ConnectionType.Override)] public string debugInfo;
 
         public override void Execute()
         {

@@ -9,13 +9,12 @@ namespace GAS.Runtime
     public abstract class WaitNode : LinkableConditionalNode
     {
         [Output] public ConditionalLink waitExecute;
-        public Action<WaitNode> onExecuteCompleted;
 
         public List<ConditionalNode> GetWaitExecuteNodes() => GetConditionalNodes(nameof(waitExecute));
 
-        protected void OnExecuteCompleted()
+        public virtual void Execute(Action<WaitNode> onWaitExecute)
         {
-            onExecuteCompleted?.Invoke(this);
+
         }
     }
 }

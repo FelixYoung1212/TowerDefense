@@ -41,6 +41,6 @@ namespace GAS.Runtime
 
     public abstract class LinkableConditionalNode : ConditionalNode
     {
-        [Input] public ConditionalLink executed;
+        [Input(connectionType = ConnectionType.Override)] public ConditionalLink executed;
     }
 }

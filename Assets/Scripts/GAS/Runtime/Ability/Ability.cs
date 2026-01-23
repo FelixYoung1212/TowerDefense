@@ -43,24 +43,19 @@ namespace GAS.Runtime
                 {
                     case WaitNode waitNode:
                         EnqueueNodes(nodesToExecute, waitNode.GetExecuteNodes());
-                        waitNode.onExecuteCompleted += waitedNode =>
-                        {
-                            Queue<Node> waitedNodes = new Queue<Node>();
-                            EnqueueNodes(waitedNodes, waitedNode.GetWaitExecuteNodes());
-                            WaitedRun(waitedNodes);
-                            waitedNode.onExecuteCompleted = null;
-                        };
-                        waitNode.Execute();
+                        waitNode.Execute(waitedNode => { RunNodes(waitedNode.GetWaitExecuteNodes()); });
                         yield return waitNode;
                         break;
                     case ForLoopNode forLoopNode:
                         EnqueueNodes(nodesToExecute, forLoopNode.GetExecuteNodes());
+                        forLoopNode.index = 0;
                         for (var i = 0; i < forLoopNode.LoopCount; i++)
                         {
-                            LoopBodyRun(new Queue<Node>(forLoopNode.GetLoopBodyNodes()));
-                            forLoopNode.Execute();
+                            RunNodes(forLoopNode.GetLoopBodyNodes());
+                            forLoopNode.index++;
                         }
 
+                        forLoopNode.Execute();
                         yield return forLoopNode;
                         break;
                     case ConditionalNode conditionalNode:
@@ -72,16 +67,15 @@ namespace GAS.Runtime
             }
         }
 
-        private void WaitedRun(Queue<Node> nodesToRun)
+        private void RunNodes(Queue<Node> nodesToRun)
         {
             var enumerator = RunGraph(nodesToRun);
             while (enumerator.MoveNext()) ;
         }
 
-        private void LoopBodyRun(Queue<Node> nodesToRun)
+        private void RunNodes<T>(List<T> nodesToRun) where T : Node
         {
-            var enumerator = RunGraph(nodesToRun);
-            while (enumerator.MoveNext()) ;
+            RunNodes(new Queue<Node>(nodesToRun));
         }
 
         private void EnqueueNodes<T>(Queue<Node> queue, List<T> nodes) where T : Node

@@ -2,9 +2,9 @@
 
 namespace GAS.Runtime
 {
-    public class IntToStringNode : Node
+    public class FloatToStringNode : Node
     {
-        [Input(connectionType = ConnectionType.Override)] public int input;
+        [Input(connectionType = ConnectionType.Override)] public float input;
         [Output] public string output;
 
         public override object GetValue(NodePort port)
