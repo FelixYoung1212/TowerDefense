@@ -38,7 +38,7 @@ namespace GAS.Runtime
                 return false;
             }
 
-            return true;
+            return ability.TryActivate();
         }
 
         public void Clear()

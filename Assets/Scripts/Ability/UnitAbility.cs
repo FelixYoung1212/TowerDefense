@@ -13,15 +13,15 @@ namespace DefaultNamespace
 
         public UnitAbility(UnitAbilityGraph graph) : base(graph)
         {
-            InitNodes();
             Graph = graph;
+            InitNodes();
         }
 
         public UnitAbility(UnitAbilityGraph graph, UnitAbilitySystem owner) : base(graph, owner)
         {
-            InitNodes();
             Graph = graph;
             Owner = owner;
+            InitNodes();
         }
 
         public int ID => Graph.ID;

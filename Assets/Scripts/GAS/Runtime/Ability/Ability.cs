@@ -12,6 +12,7 @@ namespace GAS.Runtime
         protected AbilityGraph Graph { get; private set; }
         public AbilitySystem Owner { get; private set; }
         public string Name { get; private set; }
+        private readonly List<OnActivateNode> m_OnActivateNodes = new List<OnActivateNode>();
 
         protected Ability(AbilityGraph graph)
         {
@@ -24,6 +25,17 @@ namespace GAS.Runtime
             Name = graph.name;
             Graph = graph;
             Owner = owner;
+        }
+
+        protected void InitNodes()
+        {
+            foreach (var node in Graph.nodes)
+            {
+                if (node is OnActivateNode onActivateNode)
+                {
+                    m_OnActivateNodes.Add(onActivateNode);
+                }
+            }
         }
 
         public virtual void SetOwner<TAbilitySystem>(TAbilitySystem owner) where TAbilitySystem : AbilitySystem
@@ -86,6 +98,11 @@ namespace GAS.Runtime
             {
                 queue.Enqueue(nodes[i]);
             }
+        }
+
+        public bool TryActivate()
+        {
+            return true;
         }
     }
 }
