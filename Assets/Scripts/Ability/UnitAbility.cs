@@ -4,22 +4,36 @@ using XNode;
 
 namespace DefaultNamespace
 {
-    public class UnitAbility : Ability<UnitAbilitySystem, UnitAbility, UnitAbilityGraph>
+    public class UnitAbility : Ability
     {
+        protected new UnitAbilityGraph Graph { get; private set; }
+        public new UnitAbilitySystem Owner { get; private set; }
         private readonly List<AbilityStartNode> m_StartNodes = new List<AbilityStartNode>();
         private readonly List<OnProjectileHitNode> m_OnProjectileHitNodes = new List<OnProjectileHitNode>();
 
         public UnitAbility(UnitAbilityGraph graph) : base(graph)
         {
             InitNodes();
+            Graph = graph;
         }
 
         public UnitAbility(UnitAbilityGraph graph, UnitAbilitySystem owner) : base(graph, owner)
         {
             InitNodes();
+            Graph = graph;
+            Owner = owner;
         }
 
         public int ID => Graph.ID;
+
+        public override void SetOwner<TAbilitySystem>(TAbilitySystem owner)
+        {
+            base.SetOwner(owner);
+            if (owner is UnitAbilitySystem unitAbilitySystem)
+            {
+                Owner = unitAbilitySystem;
+            }
+        }
 
         private void InitNodes()
         {

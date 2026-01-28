@@ -1,11 +1,15 @@
+using UnityEngine;
 using XNode;
 
 namespace GAS.Runtime
 {
     /// <summary>
-    ///能力图表抽象类
+    ///能力图表类
     /// </summary>
-    public abstract class AbilityGraph : NodeGraph
+    [CreateAssetMenu(menuName = "GAS/Ability Graph", fileName = "New Ability Graph")]
+    public class AbilityGraph : NodeGraph
     {
+        [SerializeField] private string m_Name;
+        public string Name => m_Name;
     }
 }

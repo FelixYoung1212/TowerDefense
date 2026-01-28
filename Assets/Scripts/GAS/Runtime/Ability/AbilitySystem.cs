@@ -5,32 +5,40 @@ using UnityEngine;
 namespace GAS.Runtime
 {
     /// <summary>
-    /// 能力系统抽象类
+    /// 能力系统类
     /// </summary>
-    /// <typeparam name="TAbilitySystem"></typeparam>
-    /// <typeparam name="TAbility"></typeparam>
-    /// <typeparam name="TAbilityGraph"></typeparam>
-    public abstract class AbilitySystem<TAbilitySystem, TAbility, TAbilityGraph> : MonoBehaviour
-        where TAbilitySystem : AbilitySystem<TAbilitySystem, TAbility, TAbilityGraph>
-        where TAbility : Ability<TAbilitySystem, TAbility, TAbilityGraph>
-        where TAbilityGraph : AbilityGraph
+    public class AbilitySystem : MonoBehaviour, IAbilitySystem
     {
-        private readonly List<TAbility> m_Abilities = new List<TAbility>();
-        protected IReadOnlyList<TAbility> Abilities => m_Abilities;
+        private readonly Dictionary<string, Ability> m_Abilities = new Dictionary<string, Ability>();
+        protected IReadOnlyDictionary<string, Ability> Abilities => m_Abilities;
         private bool m_Initialized;
 
-        public virtual void Init(List<TAbilityGraph> abilityGraphs)
+        public virtual void Init<TAbility, TAbilityGraph>(List<TAbilityGraph> abilityGraphs)
+            where TAbility : Ability where TAbilityGraph : AbilityGraph
         {
             if (abilityGraphs == null || abilityGraphs.Count == 0) return;
             foreach (var abilityGraph in abilityGraphs)
             {
                 if (Activator.CreateInstance(typeof(TAbility), abilityGraph, this) is TAbility ability)
                 {
-                    m_Abilities.Add(ability);
+                    if (!m_Abilities.TryAdd(ability.Name, ability))
+                    {
+                        Debug.LogError($"Ability with name {ability.Name} already exists in {GetType().Name}.");
+                    }
                 }
             }
 
             m_Initialized = true;
+        }
+
+        public bool TryActivateAbility(string abilityName)
+        {
+            if (!m_Abilities.TryGetValue(abilityName, out var ability))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public void Clear()

@@ -5,31 +5,28 @@ using XNode;
 namespace GAS.Runtime
 {
     /// <summary>
-    /// 能力抽象类
+    /// 能力类
     /// </summary>
-    /// <typeparam name="TAbilitySystem">能力拥有者</typeparam>
-    /// <typeparam name="TAbility"></typeparam>
-    /// <typeparam name="TAbilityGraph"></typeparam>
-    public abstract class Ability<TAbilitySystem, TAbility, TAbilityGraph>
-        where TAbilitySystem : AbilitySystem<TAbilitySystem, TAbility, TAbilityGraph>
-        where TAbility : Ability<TAbilitySystem, TAbility, TAbilityGraph>
-        where TAbilityGraph : AbilityGraph
+    public class Ability
     {
-        protected TAbilityGraph Graph { get; private set; }
-        public TAbilitySystem Owner { get; private set; }
+        protected AbilityGraph Graph { get; private set; }
+        public AbilitySystem Owner { get; private set; }
+        public string Name { get; private set; }
 
-        protected Ability(TAbilityGraph graph)
+        protected Ability(AbilityGraph graph)
         {
+            Name = graph.name;
             Graph = graph;
         }
 
-        protected Ability(TAbilityGraph graph, TAbilitySystem owner)
+        protected Ability(AbilityGraph graph, AbilitySystem owner)
         {
+            Name = graph.name;
             Graph = graph;
             Owner = owner;
         }
 
-        public void SetOwner(TAbilitySystem owner)
+        public virtual void SetOwner<TAbilitySystem>(TAbilitySystem owner) where TAbilitySystem : AbilitySystem
         {
             Owner = owner;
         }
