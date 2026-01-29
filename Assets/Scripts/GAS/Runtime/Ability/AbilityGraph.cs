@@ -9,7 +9,7 @@ namespace GAS.Runtime
     [CreateAssetMenu(menuName = "GAS/Ability Graph", fileName = "New Ability Graph")]
     public class AbilityGraph : NodeGraph
     {
-        [SerializeField] private string m_Name;
-        public string Name => m_Name;
+        [SerializeField] private string m_AbilityName;
+        public string AbilityName => m_AbilityName;
     }
 }
