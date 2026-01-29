@@ -629,7 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemySpawnArea: {fileID: 1634314808}
   m_HeroSpawnPoint: {fileID: 601232105}
-  m_AbilityGraph: {fileID: 11400000, guid: 449c21266a368224eb0e3299d8384c09, type: 2}
+  m_AbilityGraph: {fileID: 11400000, guid: 09d7571a012389044875bd33eed8793e, type: 2}
 --- !u!1 &880994942
 GameObject:
   m_ObjectHideFlags: 0

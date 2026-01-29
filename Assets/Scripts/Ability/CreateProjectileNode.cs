@@ -1,20 +1,19 @@
 ﻿using GAS.Runtime;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace DefaultNamespace
 {
-    public class CreateProjectileNode : LinkableConditionalNode, IAbilityOwner<UnitAbility>
+    public class CreateProjectileNode : LinkableConditionalNode, IAbilityOwner
     {
-        [Input] [LabelText("飞行物预设")] public AssetReferenceT<GameObject> prefab;
-        [Input] [LabelText("飞行速度")] public float speed;
-        [Input] [LabelText("目标")] public Unit target;
+        [Input] public AssetReferenceT<GameObject> prefab;
+        [Input] public float speed;
+        [Input] public Unit target;
         private int m_ID = 2000;
 
-        public UnitAbility Ability { get; private set; }
+        public Ability Ability { get; private set; }
 
-        public void SetAbility(UnitAbility ability)
+        public void SetAbility(Ability ability)
         {
             Ability = ability;
         }

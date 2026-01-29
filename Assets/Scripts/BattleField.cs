@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GAS.Runtime;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -7,7 +8,7 @@ namespace DefaultNamespace
     {
         [SerializeField] private EnemySpawnArea m_EnemySpawnArea;
         [SerializeField] private RectTransform m_HeroSpawnPoint;
-        [SerializeField] private UnitAbilityGraph m_AbilityGraph;
+        [SerializeField] private AbilityGraph m_AbilityGraph;
 
         private void Start()
         {
@@ -25,11 +26,8 @@ namespace DefaultNamespace
             {
                 hero.transform.position = m_HeroSpawnPoint.position;
                 hero.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-                hero.AbilitySystem.Init<UnitAbility, UnitAbilityGraph>(new List<UnitAbilityGraph> { m_AbilityGraph });
-                // if (hero.AbilitySystem.TryGetAbility(1, out var ability))
-                // {
-                //     ability.Start();
-                // }
+                hero.AbilitySystem.Init<Ability>(new List<AbilityGraph> { m_AbilityGraph });
+                hero.AbilitySystem.TryActivateAbility("Ability1");
             });
         }
     }

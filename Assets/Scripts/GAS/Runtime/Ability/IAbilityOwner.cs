@@ -1,16 +1,16 @@
 ﻿namespace GAS.Runtime
 {
-    public interface IAbilityOwner<TAbility>
+    public interface IAbilityOwner
     {
         /// <summary>
         /// 技能所有者
         /// </summary>
-        public TAbility Ability { get; }
+        public Ability Ability { get; }
 
         /// <summary>
         /// 技能所有者初始化
         /// </summary>
         /// <param name="ability">技能所有者</param>
-        public void SetAbility(TAbility ability);
+        public void SetAbility(Ability ability);
     }
 }

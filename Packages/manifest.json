@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "cn.tuanjie.minihost": "1.0.14",
+    "com.alelievr.node-graph-processor": "https://github.com/FelixYoung1212/NodeGraphProcessor.git#upm",
     "com.bytedance.starksdk": "file:../Assets/../LocalPackages/com.bytedance.starksdk@6.6.0",
     "com.code-philosophy.hybridclr": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
     "com.code-philosophy.luban": "https://gitee.com/focus-creative-games/luban_unity.git",

@@ -1,290 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:yousandi.cn,2023:
---- !u!114 &-8322341458986233556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc479cfc26f49bb830c053fa4a696ad, type: 3}
-  m_Name: Get Enemy
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 168, y: -56}
-  ports:
-    keys:
-    - enemy
-    values:
-    - _fieldName: enemy
-      _node: {fileID: -8322341458986233556}
-      _typeQualifiedName: Unit, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: target
-        node: {fileID: 2399792838117565026}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  enemy: {fileID: 0}
---- !u!114 &-2067576644726448654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3781b2cd9fa149c89ce5046e2733527f, type: 3}
-  m_Name: Math
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 72, y: 56}
-  ports:
-    keys:
-    - b
-    - a
-    - result
-    values:
-    - _fieldName: b
-      _node: {fileID: -2067576644726448654}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: a
-      _node: {fileID: -2067576644726448654}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: output
-        node: {fileID: 6988422639924044730}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: result
-      _node: {fileID: -2067576644726448654}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: waitSeconds
-        node: {fileID: -922973333707135762}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  a: 0
-  b: 0.5
-  result: 0
-  mathType: 2
---- !u!114 &-922973333707135762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec2385f6a19a4f85a9e24e5363b0b351, type: 3}
-  m_Name: Wait Seconds
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 40, y: -216}
-  ports:
-    keys:
-    - executed
-    - waitSeconds
-    - execute
-    - waitExecute
-    values:
-    - _fieldName: executed
-      _node: {fileID: -922973333707135762}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: loopBody
-        node: {fileID: -792886190919814940}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: waitSeconds
-      _node: {fileID: -922973333707135762}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: result
-        node: {fileID: -2067576644726448654}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: execute
-      _node: {fileID: -922973333707135762}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: waitExecute
-      _node: {fileID: -922973333707135762}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: executed
-        node: {fileID: 2399792838117565026}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  waitSeconds: 0.5
---- !u!114 &-792886190919814940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad05f329848641c9b2baf27e851edca7, type: 3}
-  m_Name: For Loop
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -312, y: -216}
-  ports:
-    keys:
-    - executed
-    - loopBody
-    - index
-    - loopCount
-    - execute
-    values:
-    - _fieldName: executed
-      _node: {fileID: -792886190919814940}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: execute
-        node: {fileID: -752620187883422240}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: loopBody
-      _node: {fileID: -792886190919814940}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: executed
-        node: {fileID: -922973333707135762}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: index
-      _node: {fileID: -792886190919814940}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: 6988422639924044730}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: loopCount
-      _node: {fileID: -792886190919814940}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: execute
-      _node: {fileID: -792886190919814940}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  loopCount: 5
-  index: 5
---- !u!114 &-752620187883422240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b71d5a2118a04275a235516d4cfcddbd, type: 3}
-  m_Name: Ability Start
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -593, y: -202.5}
-  ports:
-    keys:
-    - execute
-    values:
-    - _fieldName: execute
-      _node: {fileID: -752620187883422240}
-      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: executed
-        node: {fileID: -792886190919814940}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc11db9f0d846fbb5649d3d7ed5e6d7, type: 3}
-  m_Name: Ability1
-  m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: -752620187883422240}
-  - {fileID: -922973333707135762}
-  - {fileID: 2399792838117565026}
-  - {fileID: -792886190919814940}
-  - {fileID: -2067576644726448654}
-  - {fileID: 6988422639924044730}
-  - {fileID: -8322341458986233556}
-  m_ID: 1
---- !u!114 &2399792838117565026
+--- !u!114 &-6775476888297680829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,7 +13,7 @@ MonoBehaviour:
   m_Name: Create Projectile
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 392, y: -216}
+  position: {x: -24, y: -232}
   ports:
     keys:
     - prefab
@@ -307,7 +23,7 @@ MonoBehaviour:
     - execute
     values:
     - _fieldName: prefab
-      _node: {fileID: 2399792838117565026}
+      _node: {fileID: -6775476888297680829}
       _typeQualifiedName: UnityEngine.AddressableAssets.AssetReferenceT`1[[UnityEngine.GameObject,
         UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
         Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -317,7 +33,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: speed
-      _node: {fileID: 2399792838117565026}
+      _node: {fileID: -6775476888297680829}
       _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
@@ -326,31 +42,31 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: target
-      _node: {fileID: 2399792838117565026}
+      _node: {fileID: -6775476888297680829}
       _typeQualifiedName: Unit, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: enemy
-        node: {fileID: -8322341458986233556}
+        node: {fileID: 3754067708221082285}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: executed
-      _node: {fileID: 2399792838117565026}
+      _node: {fileID: -6775476888297680829}
       _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: waitExecute
-        node: {fileID: -922973333707135762}
+      - fieldName: execute
+        node: {fileID: 2950134439304538065}
         reroutePoints: []
       _direction: 0
       _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: execute
-      _node: {fileID: 2399792838117565026}
+      _node: {fileID: -6775476888297680829}
       _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -362,10 +78,10 @@ MonoBehaviour:
     m_AssetGUID: 5a413226c7007a744acae287a4cf8028
     m_SubObjectName: 
     m_SubObjectType: 
-    m_EditorAssetChanged: 1
-  speed: 1
+    m_EditorAssetChanged: 0
+  speed: 10
   target: {fileID: 0}
---- !u!114 &6988422639924044730
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,39 +90,72 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42f0c41bba2d4562ad70cdf58d136f9d, type: 3}
-  m_Name: Int To Float
+  m_Script: {fileID: 11500000, guid: bc3f803040fb71f4da98072c37b80644, type: 3}
+  m_Name: Ability1
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 2950134439304538065}
+  - {fileID: -6775476888297680829}
+  - {fileID: 3754067708221082285}
+  m_Name: Ability1
+--- !u!114 &2950134439304538065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7548dc433641472cbf1809f3e32f6eb2, type: 3}
+  m_Name: On Activate
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -168, y: 56}
+  position: {x: -504, y: -280}
   ports:
     keys:
-    - input
-    - output
+    - execute
     values:
-    - _fieldName: input
-      _node: {fileID: 6988422639924044730}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
+    - _fieldName: execute
+      _node: {fileID: 2950134439304538065}
+      _typeQualifiedName: GAS.Runtime.ConditionalLink, GAS.Runtime, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: index
-        node: {fileID: -792886190919814940}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: 6988422639924044730}
-      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: a
-        node: {fileID: -2067576644726448654}
+      - fieldName: executed
+        node: {fileID: -6775476888297680829}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  input: 0
-  output: 0
+--- !u!114 &3754067708221082285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc479cfc26f49bb830c053fa4a696ad, type: 3}
+  m_Name: Get Enemy
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -472, y: -104}
+  ports:
+    keys:
+    - enemy
+    values:
+    - _fieldName: enemy
+      _node: {fileID: 3754067708221082285}
+      _typeQualifiedName: Unit, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: target
+        node: {fileID: -6775476888297680829}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  enemy: {fileID: 0}

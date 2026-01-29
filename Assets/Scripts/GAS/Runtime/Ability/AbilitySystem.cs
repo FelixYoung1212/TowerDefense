@@ -13,8 +13,7 @@ namespace GAS.Runtime
         protected IReadOnlyDictionary<string, Ability> Abilities => m_Abilities;
         private bool m_Initialized;
 
-        public virtual void Init<TAbility, TAbilityGraph>(List<TAbilityGraph> abilityGraphs)
-            where TAbility : Ability where TAbilityGraph : AbilityGraph
+        public virtual void Init<TAbility>(List<AbilityGraph> abilityGraphs) where TAbility : Ability
         {
             if (abilityGraphs == null || abilityGraphs.Count == 0) return;
             foreach (var abilityGraph in abilityGraphs)

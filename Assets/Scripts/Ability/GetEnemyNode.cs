@@ -7,7 +7,7 @@ using XNode;
 
 namespace DefaultNamespace
 {
-    public class GetEnemyNode : Node, IAbilityOwner<UnitAbility>
+    public class GetEnemyNode : Node, IAbilityOwner
     {
         [Output] public Unit enemy;
 
@@ -15,9 +15,9 @@ namespace DefaultNamespace
 
         private readonly List<IEntity> m_Enemys = new List<IEntity>();
 
-        public UnitAbility Ability { get; private set; }
+        public Ability Ability { get; private set; }
 
-        public void SetAbility(UnitAbility ability)
+        public void SetAbility(Ability ability)
         {
             Ability = ability;
         }

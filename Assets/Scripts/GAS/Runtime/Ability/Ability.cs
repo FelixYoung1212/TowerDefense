@@ -18,6 +18,7 @@ namespace GAS.Runtime
         {
             Name = graph.name;
             Graph = graph;
+            InitNodes();
         }
 
         protected Ability(AbilityGraph graph, AbilitySystem owner)
@@ -25,9 +26,10 @@ namespace GAS.Runtime
             Name = graph.name;
             Graph = graph;
             Owner = owner;
+            InitNodes();
         }
 
-        protected void InitNodes()
+        private void InitNodes()
         {
             foreach (var node in Graph.nodes)
             {
@@ -35,12 +37,27 @@ namespace GAS.Runtime
                 {
                     m_OnActivateNodes.Add(onActivateNode);
                 }
+
+                if (node is IAbilityOwner abilityOwner)
+                {
+                    abilityOwner.SetAbility(this);
+                }
             }
         }
 
         public virtual void SetOwner<TAbilitySystem>(TAbilitySystem owner) where TAbilitySystem : AbilitySystem
         {
             Owner = owner;
+        }
+
+        public void OnActivate()
+        {
+            if (m_OnActivateNodes.Count == 0)
+            {
+                return;
+            }
+
+            RunNodes(new Queue<Node>(m_OnActivateNodes));
         }
 
         protected IEnumerator RunGraph(Queue<Node> nodesToExecute)
@@ -102,6 +119,7 @@ namespace GAS.Runtime
 
         public bool TryActivate()
         {
+            OnActivate();
             return true;
         }
     }

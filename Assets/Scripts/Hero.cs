@@ -1,12 +1,14 @@
-﻿namespace DefaultNamespace
+﻿using GAS.Runtime;
+
+namespace DefaultNamespace
 {
     public class Hero : Unit
     {
-        public UnitAbilitySystem AbilitySystem { get; private set; }
+        public AbilitySystem AbilitySystem { get; private set; }
 
         private void Awake()
         {
-            AbilitySystem = gameObject.AddComponent<UnitAbilitySystem>();
+            AbilitySystem = gameObject.AddComponent<AbilitySystem>();
         }
     }
 }
