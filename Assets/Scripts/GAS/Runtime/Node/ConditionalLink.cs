@@ -1,10 +1,4 @@
-﻿using System;
-
 namespace GAS.Runtime
 {
-    [Serializable]
-    public struct ConditionalLink
-    {
-        
-    }
+    public struct ConditionalLink {}
 }

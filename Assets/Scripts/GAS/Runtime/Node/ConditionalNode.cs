@@ -1,46 +1,56 @@
-﻿using System.Collections.Generic;
-using XNode;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using GraphProcessor;
+using UnityEngine;
 
 namespace GAS.Runtime
 {
-    public abstract class ConditionalNode : Node
+    [Serializable]
+    public abstract class ConditionalNode : BaseNode, IConditionalNode
     {
-        [Output] public ConditionalLink execute;
+        [Input(name = "Executed", allowMultiple = true)]
+        public ConditionalLink executed;
 
-        protected List<ConditionalNode> GetConditionalNodes(string fieldName)
+        public abstract IEnumerable<ConditionalNode> GetExecutedNodes();
+
+        public override FieldInfo[] GetNodeFields()
         {
-            List<ConditionalNode> conditionalNodes = new List<ConditionalNode>();
-            foreach (var outputPort in Outputs)
-            {
-                if (outputPort != null && outputPort.fieldName == fieldName)
-                {
-                    var connections = outputPort.GetConnections();
-                    foreach (var connectPort in connections)
-                    {
-                        conditionalNodes.Add(connectPort.node as ConditionalNode);
-                    }
-
-                    break;
-                }
-            }
-
-            return conditionalNodes;
-        }
-
-        public List<ConditionalNode> GetExecuteNodes() => GetConditionalNodes(nameof(execute));
-
-        public override object GetValue(NodePort port)
-        {
-            return null;
-        }
-
-        public virtual void Execute()
-        {
+            var fields = base.GetNodeFields();
+            Array.Sort(fields, (f1, f2) => f1.Name == nameof(executed) ? -1 : 1);
+            return fields;
         }
     }
 
-    public abstract class LinkableConditionalNode : ConditionalNode
+    [Serializable]
+    public abstract class LinearConditionalNode : ConditionalNode, IConditionalNode
     {
-        [Input(connectionType = ConnectionType.Override)] public ConditionalLink executed;
+        [Output(name = "Executes")] public ConditionalLink executes;
+
+        public override IEnumerable<ConditionalNode> GetExecutedNodes()
+        {
+            return outputPorts.FirstOrDefault(n => n.fieldName == nameof(executes))
+                .GetEdges().Select(e => e.inputNode as ConditionalNode);
+        }
+    }
+
+    [Serializable]
+    public abstract class WaitableNode : LinearConditionalNode
+    {
+        [Output(name = "Execute After")] public ConditionalLink executeAfter;
+
+        protected void ProcessFinished()
+        {
+            onProcessFinished.Invoke(this);
+        }
+
+        [HideInInspector] public Action<WaitableNode> onProcessFinished;
+
+        public IEnumerable<ConditionalNode> GetExecuteAfterNodes()
+        {
+            return outputPorts.FirstOrDefault(n => n.fieldName == nameof(executeAfter))
+                .GetEdges().Select(e => e.inputNode as ConditionalNode);
+        }
     }
 }

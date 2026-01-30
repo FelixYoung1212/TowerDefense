@@ -1,6 +1,10 @@
-﻿namespace GAS.Runtime
+﻿using System;
+using GraphProcessor;
+
+namespace GAS.Runtime
 {
-    public class OnActivateNode : ConditionalNode
+    [Serializable, NodeMenuItem("技能/激活节点")]
+    public class OnActivateNode : BaseNode
     {
     }
 }

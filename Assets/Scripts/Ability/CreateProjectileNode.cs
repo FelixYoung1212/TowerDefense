@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameFramework.Entity;
 using GAS.Runtime;
+using GraphProcessor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityGameFramework.Runtime;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
-    public class CreateProjectileNode : LinkableConditionalNode, IAbilityOwner
+    [Serializable, NodeMenuItem("技能/创建发射物")]
+    public class CreateProjectileNode : LinearConditionalNode, IAbilityOwner
     {
         [Input] public AssetReferenceT<GameObject> prefab;
         [Input] public float speed;
@@ -22,7 +26,7 @@ namespace DefaultNamespace
             Ability = ability;
         }
 
-        public override void Execute()
+        protected override void Process()
         {
             m_EnemyEntityGroup ??= GameEntry.Entity.GetEntityGroup("Enemy");
 

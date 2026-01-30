@@ -1,31 +1,41 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using XNode;
+using GraphProcessor;
+using System.Linq;
 
 namespace GAS.Runtime
 {
-    public class ForLoopNode : LinkableConditionalNode
+    [Serializable, NodeMenuItem("技能/ForLoop")]
+    public class ForLoopNode : ConditionalNode
     {
-        [Input(connectionType = ConnectionType.Override)] public int loopCount;
-        [Output] public ConditionalLink loopBody;
+        [Output(name = "Loop Body")] public ConditionalLink loopBody;
+
+        [Output(name = "Loop Completed")] public ConditionalLink loopCompleted;
+
+        public int start = 0;
+        public int end = 10;
+
         [Output] public int index;
 
-        public List<ConditionalNode> GetLoopBodyNodes() => GetConditionalNodes(nameof(loopBody));
+        public override string name => "ForLoop";
 
-        public int LoopCount => GetInputValue(nameof(loopCount), loopCount);
+        protected override void Process() => index++; // Implement all logic that affects the loop inner fields
 
-        public override object GetValue(NodePort port)
+        public override IEnumerable<ConditionalNode> GetExecutedNodes() =>
+            throw new System.Exception("Do not use GetExecutedNoes in for loop to get it's dependencies");
+
+        public IEnumerable<ConditionalNode> GetExecutedNodesLoopBody()
         {
-            if (port.fieldName == nameof(index))
-            {
-                return index;
-            }
-
-            return null;
+            // Return all the nodes connected to the executes port
+            return outputPorts.FirstOrDefault(n => n.fieldName == nameof(loopBody))
+                .GetEdges().Select(e => e.inputNode as ConditionalNode);
         }
 
-        public override void Execute()
+        public IEnumerable<ConditionalNode> GetExecutedNodesLoopCompleted()
         {
+            // Return all the nodes connected to the executes port
+            return outputPorts.FirstOrDefault(n => n.fieldName == nameof(loopCompleted))
+                .GetEdges().Select(e => e.inputNode as ConditionalNode);
         }
     }
 }

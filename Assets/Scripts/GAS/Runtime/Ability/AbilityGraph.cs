@@ -1,5 +1,5 @@
+using GraphProcessor;
 using UnityEngine;
-using XNode;
 
 namespace GAS.Runtime
 {
@@ -7,7 +7,7 @@ namespace GAS.Runtime
     ///能力图表类
     /// </summary>
     [CreateAssetMenu(menuName = "GAS/Ability Graph", fileName = "New Ability Graph")]
-    public class AbilityGraph : NodeGraph
+    public class AbilityGraph : BaseGraph
     {
     }
 }
