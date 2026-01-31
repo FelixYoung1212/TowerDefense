@@ -14,7 +14,7 @@ namespace GAS.Editor
 
             root.Add(new Button(() => EditorWindow.GetWindow<AbilityGraphWindow>().InitializeGraph(target as AbilityGraph))
             {
-                text = "技能编辑器"
+                text = "打开技能编辑器"
             });
         }
     }

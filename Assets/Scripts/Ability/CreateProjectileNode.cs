@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 namespace DefaultNamespace
 {
     [Serializable, NodeMenuItem("技能/创建发射物")]
-    public class CreateProjectileNode : LinearConditionalNode, IAbilityOwner
+    public class CreateProjectileNode : LinearConditionalNode
     {
         [Input] public AssetReferenceT<GameObject> prefab;
         [Input] public float speed;
@@ -21,7 +21,7 @@ namespace DefaultNamespace
 
         public Ability Ability { get; private set; }
 
-        public void SetAbility(Ability ability)
+        public void Init(Ability ability)
         {
             Ability = ability;
         }

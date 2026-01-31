@@ -15,6 +15,12 @@ namespace GAS.Runtime
 
         public virtual void Init<TAbility>(List<AbilityGraph> abilityGraphs) where TAbility : Ability
         {
+            if (m_Initialized)
+            {
+                Debug.LogWarning($"{GetType().Name} is already initialized.");
+                return;
+            }
+
             if (abilityGraphs == null || abilityGraphs.Count == 0) return;
             foreach (var abilityGraph in abilityGraphs)
             {
@@ -23,6 +29,13 @@ namespace GAS.Runtime
                     if (!m_Abilities.TryAdd(ability.Name, ability))
                     {
                         Debug.LogError($"Ability with name {ability.Name} already exists in {GetType().Name}.");
+                        continue;
+                    }
+
+                    if (!abilityGraph.SetParameterValue("AbilitySystem", this))
+                    {
+                        Debug.LogError(
+                            $"Failed to set AbilitySystem parameter in graph {abilityGraph.name} for ability {ability.Name}.");
                     }
                 }
             }

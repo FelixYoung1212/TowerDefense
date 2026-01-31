@@ -2,12 +2,10 @@
 using GameFramework.Entity;
 using GAS.Runtime;
 using GraphProcessor;
-using UnityEngine;
-using UnityGameFramework.Runtime;
 
 namespace DefaultNamespace
 {
-    public class GetEnemyNode : BaseNode, IAbilityOwner
+    public class GetEnemyNode : BaseNode
     {
         [Output] public Unit enemy;
 
@@ -17,7 +15,7 @@ namespace DefaultNamespace
 
         public Ability Ability { get; private set; }
 
-        public void SetAbility(Ability ability)
+        public void Init(Ability ability)
         {
             Ability = ability;
         }

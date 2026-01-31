@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using GAS.Runtime;
 using UnityEngine;
 
@@ -12,6 +13,12 @@ namespace DefaultNamespace
 
         private void Start()
         {
+            StartCoroutine(CreateEnemies());
+        }
+
+        private IEnumerator CreateEnemies()
+        {
+            yield return new WaitForSeconds(1.0f);
             for (int i = 0; i < 10; i++)
             {
                 GameEntry.Entity.ShowEntity<Enemy>(i + 1, "Assets/AddressableResources/Enemys/Enemy1.prefab", "Enemy",

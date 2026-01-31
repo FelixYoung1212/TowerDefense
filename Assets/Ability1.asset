@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3f803040fb71f4da98072c37b80644, type: 3}
+  m_Name: Ability1
+  m_EditorClassIdentifier: 
+  serializedNodes: []
+  nodes:
+  - rid: 1464773392254894115
+  - rid: 1464773392254894235
+  - rid: 1464773392254894236
+  edges:
+  - GUID: 472f8838-c68f-4b38-8705-af8fc4e60965
+    owner: {fileID: 11400000}
+    inputNodeGUID: 9ae22ab3-3216-45bd-9ccf-430750578bb7
+    outputNodeGUID: 16d4c44a-55aa-4b2c-af6d-a3208e2aa963
+    inputFieldName: obj
+    outputFieldName: index
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: bf677b5a-7856-45d0-90f1-6eb33177901f
+    owner: {fileID: 11400000}
+    inputNodeGUID: a7352583-9baa-4194-b16c-8ba2dcab1a48
+    outputNodeGUID: 4ddef377-f1f9-4424-8e1c-e24dce3901c9
+    inputFieldName: executed
+    outputFieldName: executes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 941b9763-9ad1-44ef-bbb2-aa635a3869cc
+    owner: {fileID: 11400000}
+    inputNodeGUID: a7352583-9baa-4194-b16c-8ba2dcab1a48
+    outputNodeGUID: bf9940f0-6ff6-4edd-b9ba-bcb2677e0e55
+    inputFieldName: owner
+    outputFieldName: output
+    inputPortIdentifier: 
+    outputPortIdentifier: output
+  groups: []
+  stackNodes: []
+  pinnedElements:
+  - position:
+      serializedVersion: 2
+      x: 12
+      y: 73
+      width: 156
+      height: 252
+    opened: 0
+    editorType:
+      serializedType: GAS.Editor.AbilityGraphProcessorView, GAS.Editor, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - position:
+      serializedVersion: 2
+      x: 0
+      y: 20
+      width: 219
+      height: 266
+    opened: 1
+    editorType:
+      serializedType: GraphProcessor.ExposedParameterView, com.alelievr.NodeGraphProcessor.Editor,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  exposedParameters:
+  - rid: 1464773392254894161
+  serializedParameterList: []
+  stickyNotes: []
+  nodeInspectorReference: {fileID: 0}
+  position: {x: 984, y: -722, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  references:
+    version: 2
+    RefIds:
+    - rid: 1464773392254894115
+      type: {class: OnActivateNode, ns: GAS.Runtime, asm: GAS.Runtime}
+      data:
+        nodeCustomName: 
+        GUID: 4ddef377-f1f9-4424-8e1c-e24dce3901c9
+        computeOrder: 0
+        position:
+          serializedVersion: 2
+          x: -757
+          y: 991.5
+          width: 91
+          height: 75
+        expanded: 1
+        debug: 0
+        nodeLock: 0
+    - rid: 1464773392254894161
+      type: {class: AbilitySystemParameter, ns: GAS.Runtime, asm: GAS.Runtime}
+      data:
+        guid: 87078544-8401-4be4-bbfa-991a64b0d3fc
+        name: AbilitySystem
+        type: 
+        serializedValue:
+          serializedType: 
+          serializedName: 
+          serializedValue: 
+        input: 1
+        settings:
+          rid: 1464773392254894162
+        val: {fileID: 0}
+    - rid: 1464773392254894162
+      type: {class: ExposedParameter/Settings, ns: GraphProcessor, asm: com.alelievr.NodeGraphProcessor.Runtime}
+      data:
+        isHidden: 0
+        expanded: 0
+        guid: 87078544-8401-4be4-bbfa-991a64b0d3fc
+    - rid: 1464773392254894235
+      type: {class: AttackNode, ns: DefaultNamespace, asm: Assembly-CSharp}
+      data:
+        nodeCustomName: 
+        GUID: a7352583-9baa-4194-b16c-8ba2dcab1a48
+        computeOrder: 2
+        position:
+          serializedVersion: 2
+          x: -475
+          y: 1017.5
+          width: 170
+          height: 99
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        owner: {fileID: 0}
+    - rid: 1464773392254894236
+      type: {class: ParameterNode, ns: GraphProcessor, asm: com.alelievr.NodeGraphProcessor.Runtime}
+      data:
+        nodeCustomName: 
+        GUID: bf9940f0-6ff6-4edd-b9ba-bcb2677e0e55
+        computeOrder: 1
+        position:
+          serializedVersion: 2
+          x: -666
+          y: 1149
+          width: 110
+          height: 37
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        parameterGUID: 87078544-8401-4be4-bbfa-991a64b0d3fc
+        accessor: 0
